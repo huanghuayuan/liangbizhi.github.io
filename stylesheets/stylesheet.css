@@ -162,6 +162,12 @@ a.button span {
   background: transparent url(../images/octocat-icon.png) 12px 50% no-repeat;
 }
 #view-on-github {
+  margin-right: 5%;
+}
+#view-on-weibo span {
+  background: transparent url(../images/sina.png) 12px 50% no-repeat;
+}
+#view-on-weibo {
   margin-right: 0;
 }
 

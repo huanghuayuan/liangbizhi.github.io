@@ -1,4 +1,4 @@
 BillLiang.github.io
 ===================
 
-Bill梁的博客
+Bill Liang's github blog.
