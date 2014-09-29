@@ -5,12 +5,14 @@ title: Hello World
 <section id="main_content">
 	<article>
 		<p>
-		我真是一个有趣的人。
+		Such a boring blog.
 		</p>
-		<pre>public static void main(String[] args){
-	System.out.println("Hello World!");
-}</pre>
-		<blockquote>“你是个好人”</blockquote>
-		<pre>{{ page.date | date_to_string }}</pre>
+		{% highlight java linenos %}
+		public static void main(String[] args){
+			System.out.println("Hello World!");
+		}
+		{% endhighlight %}
+		<blockquote>You are a good guy!!</blockquote>
 	</article>
+	{{ page.date | date_to_string }}
 </section>
