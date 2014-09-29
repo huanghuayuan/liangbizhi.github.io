@@ -1,3 +1,5 @@
+_site/
+
 # Object files
 *.o
 *.ko
