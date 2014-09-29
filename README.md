@@ -1,6 +1,5 @@
-BillLiang.github.io
+lbz
 ===================
 
-<a href="http://billliang.github.io" target="_blank">http://billliang.github.io</a><br>
-Bill Liang's github page.<br>
-Click to visit ^-^
+My github page.<br>
+__[My github page](http://billliang.github.io "welcome to my page!")__

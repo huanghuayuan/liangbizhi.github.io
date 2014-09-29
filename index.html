@@ -1,48 +1,10 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/pygment_trac.css" media="screen">
-    <link rel="stylesheet" type="text/css" href="stylesheets/print.css" media="print">
-    <!--[if lt IE 9]>
-    <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
-    <![endif]-->
-    <title>Billliang.github.io</title>
-  </head>
-  <body>
-    <div id="container">
-      <div class="inner">
-
-        <header>
-          <h1>Bill Liang's github page</h1>
-        </header>
-
-        <section id="downloads" class="clearfix">
-          <a href="https://github.com/BillLiang" id="view-on-github" class="button"><span>My GitHub</span></a>
-          <a href="http://weibo.com/bikuqixinzhi" id="view-on-weibo" class="button"><span>My Weibo</span></a>
-        </section>
-
-        <hr>
-
-        <section id="main_content">
-			<h1><a name="billlianggithubio" class="anchor" href="#billlianggithubio"><span class="octicon octicon-link"></span></a>
-			<a href="hello-world.html" target="_self">Hello World!</a></h1>
-			<p>我真是一个有趣的人</p>
-			
-			<hr>
-			
-			<h1><a href="bz-os.html" target="_self">bzOS</a></h1>
-			<p>一个简单操作系统</p>
-        </section>
-
-        <footer>
-          This page was created by <a href="http://weibo.com/bikuqixinzhi">@必苦其心志</a>.
-        </footer>
-
-        
-      </div>
-    </div>
-  </body>
-</html>
+---
+layout: default
+title: Bill Liang
+---
+<section id="main_content">
+	{% for post in site.posts %}				
+		<h1><a href="{{ post.url }}" target="_self">{{ post.title }}</a></h1>
+		<p>{{ post.date | date_to_string }}</p>
+	{% endfor %}
+</section>
