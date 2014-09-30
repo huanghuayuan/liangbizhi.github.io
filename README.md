@@ -1,4 +1,4 @@
-梁必志
+liangbizhi.github.io
 ===================
 
-__[My github page](http://billliang.github.io "welcome to my page!")__
+__[My github page](http://liangbizhi.github.io "welcome to my page!")__
