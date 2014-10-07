@@ -1,57 +1,70 @@
-#title{
- 	font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif, serif;
+.logo{
+	height: inherit;
+	width: 80px;
+	float: left;
+	margin-left: 50px;
+	overflow: hidden;
+	border-radius: 50%;
+	background: url(/images/me.jpg) no-repeat 1px 0px
+}
+.logo-scroll{
+ 	font-family: '微软雅黑', '黑体', Helvetica, Arial, sans-serif, serif;
 	color: #000;
 	font-weight: bold;
 	font-size: 20px;
+	float: left;
+	margin-left: 50px;
 	text-shadow: 5px 5px 5px #888;
 }
-#title:hover{
+.logo:hover{
+	cursor: pointer;
+	border: solid 1px rgba(0, 0, 0, 0.1);
+}
+.logo-scroll:hover{
 	color: #0080d0;
+	cursor: pointer;
 }
 #follow{
+	height: inherit;
 	float: right;
+}
+#github, #weibo, #google-plus{
+	float: right;
+	width: 50px;
+	height: inherit;
 }
 #github{
-	float: right;
-	width: 50px;
-	height: 50px;
 	background: url(/images/github.png) no-repeat center center;
-	border-radius: 50%;
 }
 #weibo{
-	float: right;
-	width: 50px;
-	height: 50px;
 	background: url(/images/weibo.png) no-repeat center center;
-	border-radius: 50%;
 }
 #google-plus{
-	float: right;
-	width: 50px;
-	height: 50px;
 	background: url(/images/google-plus.png) no-repeat center center;
-	border-radius: 50%;
 }
 #github:hover, #weibo:hover, #google-plus:hover{
-	border: solid 1px rgba(0, 0, 0, 0.2);
+	border: solid 1px rgba(0, 0, 0, 0.1);
 	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
 }
 
 .nav{
-	height: 50px;
-	margin: 0 20px;
+	margin: 0 10px;
+	height: 80px;
+	line-height: 80px;
 	border-bottom: solid 1px #ccc;
 	zoom: 1;
 	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
 .nav ul{
+	height: inherit;
+	line-height: inherit;
 	margin: 0;
 }
 .nav ul li{
 	float: left;
 	margin: 0 30px;
-	height: 50px;
-	line-height: 50px;
+	height: inherit;
+	line-height: inherit;
 	list-style: none;
 }
 .nav ul li a{
@@ -67,6 +80,8 @@
 .nav-scroll{
 	background: #fff;
 	position: fixed;
+	height: 50px;
+	line-height: 50px;
 	width: 100%;
 	margin: 0;
 	left: 0;
@@ -96,17 +111,14 @@
 @media only screen and (max-width: 767px) {
 .nav {
 	margin: 0;
-	height: 300px;
 }
 .nav ul li {
 	clear: both;
-	display: block;
-	border-top: solid 1px rgba(0, 0, 0, 0.2);
+	display: none;
 }
 #follow {
 	clear: both;
-	display: block;
+	display: none;
 }
-
 
 }
