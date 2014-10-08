@@ -1,3 +1,8 @@
+p{
+	text-indent: 2em !important;
+	line-height: 180%;
+}
+
 .logo{
 	height: inherit;
 	width: 80px;
@@ -31,7 +36,8 @@
 #github, #weibo, #google-plus{
 	float: right;
 	width: 50px;
-	height: inherit;
+	height: 50px;
+	margin: 15px 0;
 }
 #github{
 	background: url(/images/github.png) no-repeat center center;
@@ -45,6 +51,7 @@
 #github:hover, #weibo:hover, #google-plus:hover{
 	border: solid 1px rgba(0, 0, 0, 0.1);
 	box-shadow: 3px 3px 2px rgba(0, 0, 0, 0.1);
+	border-radius: 50%;
 }
 
 .nav{
