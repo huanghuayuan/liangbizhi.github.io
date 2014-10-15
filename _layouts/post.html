@@ -21,7 +21,11 @@
     <div id="container">
       <div class="inner">
 
+	<div id="article-title">{{ page.title }}</div>
+
 	{{ content }}
+	
+	{% include duoshuo.html %}
 
 	{% include footer.html %}
 

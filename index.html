@@ -5,6 +5,6 @@ title: liangbizhi(Bill Liang)
 <section id="main_content">
 	{% for post in site.posts %}				
 		<h1><a href="{{ post.url }}" target="_self">{{ post.title }}</a></h1>
-		<p>{{ post.date | date_to_string }}</p>
+		<div class="article-date text-left">{{ post.date | date_to_string }}</div>
 	{% endfor %}
 </section>

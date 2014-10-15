@@ -1,6 +1,21 @@
 p{
 	text-indent: 2em !important;
-	line-height: 180%;
+	line-height: 30px;
+}
+#article-title{
+	font-size: 2em;
+	text-align: center;
+	margin-bottom: 20px;
+}
+.article-date{
+	font-size: 0.8em;
+	margin-bottom: 50px;
+}
+.text-left{
+	text-align: left;
+}
+.text-right{
+	text-align: right;
 }
 
 .logo{
@@ -93,6 +108,7 @@ p{
 	margin: 0;
 	left: 0;
 	top: 0;
+	z-index: 999;
 }
 
 .back-to-top{
