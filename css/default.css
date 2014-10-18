@@ -84,18 +84,21 @@ p{
 }
 .nav ul li{
 	float: left;
-	margin: 0 30px;
+	margin: 0 40px;
 	height: inherit;
+	padding: 0 5px !important;
 	line-height: inherit;
 	list-style: none;
+}
+.nav ul li:hover{
+	border-top: solid 5px #0080d0;
 }
 .nav ul li a{
 	cursor: pointer;
 	font-weight: bold;
 }
 .nav ul li a:hover{
-	text-color: #0080d0;
-	text-size: larger;
+	color: #0080d0;
 	text-shadow: 2px 2px 2px #aaa;
 }
 

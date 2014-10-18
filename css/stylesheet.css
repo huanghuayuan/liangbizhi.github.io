@@ -296,12 +296,13 @@ p a {
 }
 
 blockquote {
-  font-size: 1.1em;
+  font-size: 1em;
   font-style: italic;
+  line-height: 30px;
   background: #e6e6e6;
   border-left: 10px solid #ccc;
   margin-bottom: 20px;
-  padding: 0 0 0 30px;
+  padding: 10px 20px 10px 20px;
 }
 
 ul li {
