@@ -13,11 +13,10 @@ $(document).ready(function(){
  * Initialize the UI.
  */
 function init(){
-	var $lyric = $("#lyric");
-	var $descTxt = $(".desc");
-	$descTxt.hide();
-	$lyric.hide();
-	$descTxt.fadeIn("slow");
+	$("#lyric").hide();
+	$(".desc").hide();
+	$("#loading").hide();
+	$(".desc").fadeIn("slow");
 }
 /**
  * Play the music.
@@ -27,6 +26,7 @@ function playAudio(){
 	if(audio){
 		$("#myface").fadeOut("slow");
 		$(".desc").text("《爱してるばんぎーい》");
+		$("#loading").show();
 		$(audio).bind("playing", realPlay(audio));
 	}else{
 		$(".desc").text("HTML5 is not supported");
