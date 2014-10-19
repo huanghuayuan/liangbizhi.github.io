@@ -26,10 +26,8 @@ function playAudio(){
 	var audio = document.getElementById("myaudio");
 	if(audio){
 		$("#myface").fadeOut("slow");
-		audio.play();
 		$(".desc").text("《爱してるばんぎーい》");
-		$("#lyric").fadeIn("slow");
-		setInterval(highlightLyric, 1000);
+		$(audio).bind("playing", realPlay(audio));
 	}else{
 		$(".desc").text("HTML5 is not supported");
 	}
@@ -51,4 +49,14 @@ function highlightLyric(){
 		$(currentLineLyric).attr("class", "lyric-hl");
 		preSecond = secondes;
 	}
+}
+
+/**
+ * Real play
+ */
+function realPlay(audio){
+	$("#loading").fadeOut("fast");
+	$("#lyric").fadeIn("slow");
+	audio.play();
+	setInterval(highlightLyric, 1000);
 }
