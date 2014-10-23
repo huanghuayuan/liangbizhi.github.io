@@ -19,7 +19,7 @@ $(document).ready(function(){
 		follows.each(function(item){
 			$(this).css("margin", ($(this).parent().height() - $(this).height()) / 2 + "px 0");
 		});
-		if($(window).scrollTop() > topHeight){
+		if($(window).scrollTop() > topHeight / 2){
 			nav.addClass("nav-scroll");
 			logo.removeClass("logo");
 			logo.addClass("logo-scroll");
