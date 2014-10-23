@@ -1,8 +1,11 @@
 var secondes = 0;
 var preSecond = 0;
 
-$(document).ready(function(){
+window.onload = function(){
 	init();
+}
+
+$(document).ready(function(){
 	var $myFace = $("#myface");
 	$myFace.click(function(){
 		playAudio();
