@@ -1,6 +1,0 @@
-baseurl: /
-safe: false
-highlighter: pygments
-excerpt_seperator: "\n\n\n"
-paginate: 3
-paginate_path: "page:num"
