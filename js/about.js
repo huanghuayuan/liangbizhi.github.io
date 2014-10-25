@@ -19,7 +19,7 @@ function init(){
 	$("#lyric").hide();
 	$(".desc").hide();
 	$("#loading").hide();
-	setTimeout("$('.desc').fadeIn('slow')", 1000);
+	$('.desc').fadeIn('slow');
 }
 /**
  * Play the music.

@@ -3,9 +3,9 @@
  */
 $(document).ready(function(){
 	var nav		= $(".nav");
-	var logo	= $(".logo");
+	var logo	= $("#logo");
 	var backToTop	= $(".back-to-top");
-	var follows	= $("#follow").children();
+
 	backToTop.hide();
 	backToTop.click(function(){
 		$("html, body").animate({scrollTop:0}, "fast");
@@ -13,22 +13,18 @@ $(document).ready(function(){
 	logo.click(function(){
 		window.location.href = "/";
 	});
-	//height of 'header' & following 'nav'.
+	nav.mouseover(function(){
+		displaySubMenu();
+	});
+	nav.mouseout(function(){
+		hideSubMenu();
+	});
 	var topHeight	= nav.height();
 	$(window).scroll(function(){
-		follows.each(function(item){
-			$(this).css("margin", ($(this).parent().height() - $(this).height()) / 2 + "px 0");
-		});
-		if($(window).scrollTop() > topHeight / 2){
+		if($(window).scrollTop() > topHeight){
 			nav.addClass("nav-scroll");
-			logo.removeClass("logo");
-			logo.addClass("logo-scroll");
-			logo.text("必苦其心志");
 		}else{
 			nav.removeClass("nav-scroll");
-			logo.removeClass("logo-scroll");
-			logo.addClass("logo");
-			logo.text("");
 		}
 		if($(window).scrollTop() > (topHeight + 100)){
 			backToTop.fadeIn("fast");
@@ -37,3 +33,15 @@ $(document).ready(function(){
 		}
 	});
 });
+
+/**
+ * javascript related to menu.
+ */
+function displaySubMenu(){
+	var subMenu = $(".submenu");
+	subMenu.stop(true, false).animate({"left" : 0}, 300);
+}
+function hideSubMenu(){
+	var subMenu = $(".submenu");
+	subMenu.stop(true, false).animate({"left" : -subMenu.width() + 5}, 300);
+}

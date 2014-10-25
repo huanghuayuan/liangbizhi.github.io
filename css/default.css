@@ -23,41 +23,66 @@ p{
 	text-align: right;
 }
 
-.logo{
-	height: inherit;
+aside{
+	font-size: 1.1em;
+	width: 200px;
+	position: fixed;
+	top: 120px;
+}
+#left-side{
+	left: 0;
+
+}
+#right-side{
+	right: 0;
+}
+
+
+.avatar-frame{
+	width: inherit;
+	height: 100px;
+	padding-top: 15px;
+	box-shadow: 1px 1px 5px 1px;
+	background: url("/images/avatar-bg.jpg");
+	background-repeat: no-repeat;
+	background-size: 400px 225px;
+	background-position: 0 0;
+}
+#avatar{
+	height: 80px;
 	width: 80px;
-	float: left;
-	margin-left: 50px;
+	display: block;
+	margin: 0 auto;
 	overflow: hidden;
 	border-radius: 50%;
-	background: url(/images/me.jpg) no-repeat 1px 0px
+	border: solid 1px rgba(0, 0, 0, 0.1);
+	background: url(/images/me.jpg) no-repeat 0px 0px
 }
-.logo-scroll{
- 	font-family: '微软雅黑', '黑体', Helvetica, Arial, sans-serif, serif;
+#avatar:hover{
+	border: solid 2px rgba(0, 0, 0, 0.1);
+}
+#logo{
 	color: #000;
 	font-weight: bold;
 	font-size: 20px;
 	float: left;
-	margin-left: 50px;
+	margin-left: 80px;
 	text-shadow: 5px 5px 5px #888;
 }
-.logo:hover{
+#logo:hover{
 	cursor: pointer;
-	border: solid 1px rgba(0, 0, 0, 0.1);
-}
-.logo-scroll:hover{
 	color: #0080d0;
-	cursor: pointer;
 }
 #follow{
 	height: inherit;
 	float: right;
+	margin-right: 30px;
 }
 #github, #weibo, #google-plus{
 	float: right;
+	display: block;
 	width: 50px;
-	height: 50px;
-	margin: 15px 0;
+	height: inherit;
 }
 #github{
 	background: url(/images/github.png) no-repeat center center;
@@ -75,48 +100,59 @@ p{
 }
 
 .nav{
-	margin: 0 10px;
-	height: 80px;
-	line-height: 80px;
 	border-bottom: solid 1px #ccc;
 	zoom: 1;
+	background: #fff;
+	position: fixed;
+	top: 0;
+	height: 50px;
+	line-height: 50px;
+	width: 100%;
+	z-index: 999;
+}
+.nav-scroll{
 	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
 }
-.nav ul{
-	height: inherit;
-	line-height: inherit;
-	margin: 0;
-}
 .nav ul li{
-	float: left;
-	margin: 0 40px;
-	height: inherit;
-	padding: 0 5px !important;
-	line-height: inherit;
+	padding-left: 10px;
+	height: 50px;
 	list-style: none;
-}
-.nav ul li:hover{
-	border-top: solid 2px #0080d0;
-}
-.nav ul li a{
-	cursor: pointer;
-	font-weight: bold;
+	font-size: 1em;
 }
 .nav ul li a:hover{
 	color: #0080d0;
 	text-shadow: 2px 2px 2px #aaa;
 }
 
-.nav-scroll{
-	background: #fff;
+
+.submenu{
 	position: fixed;
-	height: 50px;
-	line-height: 50px;
-	width: 100%;
-	margin: 0;
-	left: 0;
-	top: 0;
-	z-index: 999;
+	top: 50px;
+	left: -345px;
+	width: 350px;
+	height: 100%;
+	clear: both;
+	background: #fff;
+	border-top: solid 1px #ccc;
+	border-right: solid 1px #ccc;
+	box-shadow: 0 1px 6px rgba(0, 0, 0, 0.1);
+}
+.categories-list{
+	float: left;
+	width: 175px;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.monthly-list{
+	float: right;
+	width: 175px;
+	height: 100%;
+	overflow-x: hidden;
+	overflow-y: auto;
+}
+.item-selected{
+	background-color: #ccc;
 }
 
 .back-to-top{
@@ -137,19 +173,16 @@ p{
 	background: #ddd;
 }
 
+.pagination{
+	text-align: center;
+	word-spacing: 10px;
+}
+
 
 /* All Mobile Sizes (devices and browser) */
 @media only screen and (max-width: 767px) {
 .nav {
 	margin: 0;
-}
-.nav ul li {
-	clear: both;
-	display: none;
-}
-#follow {
-	clear: both;
-	display: none;
 }
 
 }

@@ -1,14 +1,15 @@
-    <div class="nav">
-      <ul>
-        <div class="logo"></div>
-        <li><a>Academic</a></li>
-        <li><a>Writings</a></li>
-        <li><a>Projects</a></li>
-        <li><a href="/about/index.html" target="_self">About me</a></li>
-      	<div id="follow">
-	  <a id="google-plus" title="My google+" href="https://plus.google.com/107690026046415883872" target="_blank"></a>
-	  <a id="weibo" title="My weibo" href="http://weibo.com/bikuqixinzhi" target="_blank"></a>
-	  <a id="github" title="My github" href="https://github.com/liangbizhi" target="_blank"></a>
+<div class="nav">
+	<div id="logo">必苦其心志</div>
+	<div id="follow">
+		<a id="google-plus" title="My google+" href="https://plus.google.com/107690026046415883872" target="_blank"></a>
+		<a id="weibo" title="My weibo" href="http://weibo.com/bikuqixinzhi" target="_blank"></a>
+		<a id="github" title="My github" href="https://github.com/liangbizhi" target="_blank"></a>
         </div>
-      </ul>
-    </div>
+	<div class="submenu">
+		<div class="avatar-frame">
+			<a id="avatar" title="About me" href="/about/index.html" target="_self"></a>
+		</div>
+		{% include categories.html %}
+		{% include monthly.html %}
+	</div>
+</div>

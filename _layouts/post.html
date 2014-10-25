@@ -24,6 +24,8 @@
 	<div id="article-title">{{ page.title }}</div>
 
 	{{ content }}
+
+	<div class="article-date text-right">{{ page.date | date: "%F" }}</div>
 	
 	{% include duoshuo.html %}
 
@@ -31,5 +33,6 @@
 
       </div>
     </div>
+    <script src="/js/baidu.js" type="text/javascript"></script>
   </body>
 </html>
