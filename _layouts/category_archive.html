@@ -2,8 +2,8 @@
 layout: default
 title: 分类
 ---
-<div>分类：{{page.category}}</div>
-{% for post in site.categories[page.category] %}				
-<h1><a href="{{ post.url }}" target="_self">{{ post.title }}</a></h1>
-	<div class="article-date text-left">{{ post.date | date: "%F" }}{{ post.category }}</div>
+<div style="text-align: center;">分类：{{page.category}}</div>
+<hr>
+{% for post in site.categories[page.category] %}
+	{% include article-item.html %}
 {% endfor %}

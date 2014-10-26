@@ -18,10 +18,12 @@
 	overflow: hidden;
 }
 .desc{
+	display: none;
 	font-size: 2.5em;
 	text-align: center;
 }
 #lyric{
+	display: none;
 	padding: 0 auto;
 }
 #lyric div{

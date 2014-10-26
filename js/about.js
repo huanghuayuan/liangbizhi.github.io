@@ -1,26 +1,14 @@
 var secondes = 0;
 var preSecond = 0;
 
-window.onload = function(){
-	init();
-}
-
 $(document).ready(function(){
 	var $myFace = $("#myface");
 	$myFace.click(function(){
 		playAudio();
 	});
+	$('.desc').fadeIn('slow');
 });
 
-/**
- * Initialize the UI.
- */
-function init(){
-	$("#lyric").hide();
-	$(".desc").hide();
-	$("#loading").hide();
-	$('.desc').fadeIn('slow');
-}
 /**
  * Play the music.
  */
@@ -29,7 +17,6 @@ function playAudio(){
 	if(audio){
 		$("#myface").fadeOut("slow");
 		$(".desc").text("《爱してるばんぎーい》");
-		$("#loading").show();
 		$(audio).bind("playing", realPlay(audio));
 	}else{
 		$(".desc").text("HTML5 is not supported");
@@ -58,7 +45,6 @@ function highlightLyric(){
  * Real play
  */
 function realPlay(audio){
-	$("#loading").fadeOut("fast");
 	$("#lyric").fadeIn("slow");
 	audio.play();
 	setInterval(highlightLyric, 1000);

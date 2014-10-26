@@ -62,8 +62,7 @@ module Jekyll
       self.basename = 'index'
       self.content = <<-EOS
 {% for post in page.posts %}
-	<h1><a href="{{ post.url }}" target="_self">{{ post.title }}</a></h1>
-	<div class="article-date text-left">{{ post.date | date: "%F" }}{{ post.category }}</div>
+	{% include article-item.html %}
 {% endfor %}
       EOS
       self.data = {
