@@ -3,22 +3,29 @@
  */
 $(document).ready(function(){
 	var nav		= $(".nav");
+	var subMenu	= $(".submenu");
 	var logo	= $("#logo");
 	var backToTop	= $(".back-to-top");
-
+	// back to top
 	backToTop.hide();
 	backToTop.click(function(){
 		$("html, body").animate({scrollTop:0}, "fast");
 	});
-	logo.click(function(){
-		window.location.href = "/";
+	// logo text events
+	logo.mouseover(function(){
+		displaySubMenu(subMenu);
 	});
-	nav.mouseover(function(){
-		displaySubMenu();
+	logo.mouseout(function(){
+		hideSubMenu(subMenu);
 	});
-	nav.mouseout(function(){
-		hideSubMenu();
+	// submenu events
+	subMenu.mouseover(function(){
+		displaySubMenu(subMenu);
 	});
+	subMenu.mouseout(function(){
+		hideSubMenu(subMenu);
+	});
+
 	var topHeight	= nav.height();
 	$(window).scroll(function(){
 		if($(window).scrollTop() > topHeight){
@@ -37,11 +44,9 @@ $(document).ready(function(){
 /**
  * javascript related to menu.
  */
-function displaySubMenu(){
-	var subMenu = $(".submenu");
-	subMenu.stop(true, false).animate({"left" : 0}, 300);
+function displaySubMenu(menu){
+	menu.stop(true, false).animate({"left" : 0}, 300);
 }
-function hideSubMenu(){
-	var subMenu = $(".submenu");
-	subMenu.stop(true, false).animate({"left" : -subMenu.width() + 5}, 300);
+function hideSubMenu(menu){
+	menu.stop(true, false).animate({"left" : -menu.width() + 5}, 300);
 }
