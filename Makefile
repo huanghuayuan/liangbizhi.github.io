@@ -15,5 +15,5 @@ everything:
 	git add -A
 	git commit -m "deploy blog"
 	git push origin master
-	echo "========== 发布成功 =========="
+	@echo "========== 发布成功 =========="
 
