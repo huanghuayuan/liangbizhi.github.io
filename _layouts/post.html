@@ -28,8 +28,12 @@
 
 	<div class="article-date text-right">{{ page.date | date: "%F" }}</div>
 	<div>
-		<a style="float: left" href="{{ page.previous.url }}" >上一篇：{{ page.previous.title }}</a>
-		<a style="float: right" href="{{ page.next.url }}" >下一篇：{{ page.next.title }}</a>
+		{% if page.previous != null %}
+		<a style="float: left" href="{{ page.previous.url }}" >←较新文章：《{{ page.previous.title }}》</a>
+		{% endif %}
+		{% if page.next != null %}
+		<a style="float: right" href="{{ page.next.url }}" >较早文章：《{{ page.next.title }}》→</a>
+		{% endif %}
 	</div>
 	
 	{% include duoshuo.html %}
