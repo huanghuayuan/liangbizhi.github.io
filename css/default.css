@@ -78,7 +78,6 @@ aside{
 	font-weight: bold;
 	font-size: 20px;
 	float: left;
-	margin-left: 80px;
 	text-shadow: 5px 5px 5px #888;
 }
 #logo:hover{
@@ -88,7 +87,6 @@ aside{
 #follow{
 	height: inherit;
 	float: right;
-	margin-right: 30px;
 }
 #github, #weibo, #google-plus{
 	float: right;
