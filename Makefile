@@ -15,5 +15,6 @@ everything:
 	git add -A
 	git commit -m "deploy blog"
 	git push origin master
-	@echo "========== 发布成功 =========="
+	git checkout source
+	@echo "========== 发布成功，当前分支<source> =========="
 
