@@ -13,6 +13,7 @@ everything:
 	rm -rf ./*
 	cp -r /tmp/_site/* .
 	git add -A
+	git add _site/
 	git commit -m "deploy blog"
 	git push origin master
 	git checkout source
