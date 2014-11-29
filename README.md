@@ -1,4 +1,6 @@
 liangbizhi.github.io
 ===================
 
-__[My github page](http://liangbizhi.github.io "welcome to my page!")__
+欢迎访问我的博客。
+
+__[点击进入](http://liangbizhi.github.io "welcome to my page!")__

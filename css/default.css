@@ -1,6 +1,7 @@
 p{
 	text-indent: 2em !important;
 	line-height: 30px;
+	margin: 20px 0;
 }
 #article-title{
 	font-size: 2em;
@@ -162,7 +163,7 @@ aside{
 	overflow-y: auto;
 }
 .item-selected{
-	background-color: #ccc;
+	background-color: #f3f3f3;
 }
 
 .back-to-top{
