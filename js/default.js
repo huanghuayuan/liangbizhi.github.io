@@ -12,19 +12,19 @@ $(document).ready(function(){
 		$("html, body").animate({scrollTop:0}, "fast");
 	});
 	// logo text events
-	logo.mouseover(function(){
+	nav.mouseover(function(){
 		displaySubMenu(subMenu);
 	});
-	logo.mouseout(function(){
+	nav.mouseout(function(){
 		hideSubMenu(subMenu);
 	});
 	// submenu events
-	subMenu.mouseover(function(){
+	/*subMenu.mouseover(function(){
 		displaySubMenu(subMenu);
 	});
 	subMenu.mouseout(function(){
 		hideSubMenu(subMenu);
-	});
+	});*/
 
 	var topHeight	= nav.height();
 	$(window).scroll(function(){

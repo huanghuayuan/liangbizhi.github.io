@@ -50,10 +50,10 @@ table {
 body {
   font-size: 1em;
   line-height: 1.5; 
-  background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat;
+  /* background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat; */
   font-family: '微软雅黑', '黑体', Helvetica, Arial, sans-serif, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: #6d6d6d;
+  color: #333;
 }
 
 a {
@@ -86,7 +86,7 @@ header h2 {
 }
 
 #container {
-  background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat;
+  /* background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat; */
   min-height: 595px;
 }
 
@@ -297,12 +297,11 @@ p a {
 
 blockquote {
   font-size: 1em;
-  font-style: italic;
   line-height: 30px;
-  background: #e6e6e6;
-  border-left: 10px solid #ccc;
+  background: #f3f3f3;
+  border-left: 10px solid #ddd;
   margin-bottom: 20px;
-  padding: 10px 20px 10px 20px;
+  padding: 1px 20px;
 }
 
 ul li {
