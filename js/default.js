@@ -48,5 +48,5 @@ function displaySubMenu(menu){
 	menu.stop(true, false).animate({"left" : 0}, 300);
 }
 function hideSubMenu(menu){
-	menu.stop(true, false).animate({"left" : -menu.width() + 5}, 300);
+	menu.stop(true, false).animate({"left" : -menu.width() - 5}, 300);
 }
