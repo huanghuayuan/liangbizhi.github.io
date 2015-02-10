@@ -50,10 +50,8 @@ table {
 body {
   font-size: 1em;
   line-height: 1.5; 
-  /* background: #e7e7e7 url(../images/body-bg.png) 0 0 repeat; */
-  font-family: '微软雅黑', '黑体', Helvetica, Arial, sans-serif, serif;
+  font-family: Helvetica, arial, freesans, clean, sans-serif, serif;
   text-shadow: 0 1px 0 rgba(255, 255, 255, 0.8);
-  color: #333;
 }
 
 a {
@@ -91,7 +89,7 @@ header h2 {
 }
 
 .inner {
-  width: 720px;
+  width: 860px;
   margin: 0 auto;
   padding: 120px 0;
 }
@@ -176,7 +174,7 @@ a.button span {
 code, pre {
   font-family: Monaco, "Bitstream Vera Sans Mono", "Lucida Console", Terminal;
   color: #222;
-  margin-bottom: 30px;
+  margin-bottom: 20px;
   font-size: 14px;
 }
 
@@ -187,15 +185,17 @@ code {
 }
 
 pre {
-  padding: 20px;
-  background: #303030;
-  color: #f2f2f2;
+  padding: 12px;
+  background: #f8f8f8;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+  color: #000;
   text-shadow: none;
   overflow: auto;
 }
 pre code {
-  color: #f2f2f2;
-  background-color: #303030;
+  color: #000;
+  background-color: #f8f8f8;
   border: none;
   padding: 0;
 }
@@ -249,7 +249,7 @@ form {
 /* GENERAL ELEMENT TYPE STYLES */
 
 h1 {
-  font-size: 32px;
+  font-size: 26px;
 } 
 
 h2 {
@@ -260,7 +260,7 @@ h2 {
 } 
 
 h3 {
-  color: #d5000d;
+  color: #303030;
   font-size: 18px;
   font-weight: bold;
   margin-bottom: 8px;
@@ -283,8 +283,9 @@ h6 {
 } 
 
 p {
-  font-weight: 300;
-  margin-bottom: 5px;
+  line-height: 28px;
+  margin: 10px 0;
+  text-indent: 2em !important;
 }
  
 a {
@@ -297,11 +298,10 @@ p a {
 
 blockquote {
   font-size: 1em;
-  line-height: 30px;
-  background: #f3f3f3;
-  border-left: 10px solid #ddd;
+  background: #fafafa;
+  border-left: 10px solid #eee;
   margin-bottom: 20px;
-  padding: 1px 20px;
+  padding: 1px 10px;
 }
 
 ul li {
