@@ -9,7 +9,7 @@ title: About me
 			<img src="/images/myhead.jpg">
 		</div>
 	</div>
-	<div class="desc">Just a guy loves coding</div>
+	<div class="desc">Just a stupid guy</div>
 	<audio id="myaudio" preload="auto" src="/sound/爱してるばんぎーい.mp3">
 		I'm sorry, but your browser doesn't support HTML5
 	</audio>
