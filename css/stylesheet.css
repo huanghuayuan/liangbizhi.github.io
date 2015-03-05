@@ -84,14 +84,16 @@ header h2 {
 }
 
 #container {
-  /* background: transparent url(../images/highlight-bg.jpg) 50% 0 no-repeat; */
+  background: #e5e5e5;
   min-height: 595px;
 }
 
 .inner {
-  width: 860px;
+  width: 720px;
   margin: 0 auto;
-  padding: 120px 0;
+  background: white;
+  padding: 120px 100px 0 100px;
+  border: solid 1px rgba(0,0,0,0.2);
 }
 
 #container .inner img {
@@ -226,16 +228,15 @@ em {
 
 table {
   width: 100%;
-  border: 1px solid #ebebeb;
+  border: 1px solid #aaa;
 }
 
 th {
-  font-weight: 500;
+  font-weight: bold;
 }
 
 td {
-  border: 1px solid #ebebeb;
-  text-align: center; 
+  border: 1px solid #aaa;
   font-weight: 300;
 }
 
@@ -285,7 +286,6 @@ h6 {
 p {
   line-height: 28px;
   margin: 10px 0;
-  text-indent: 2em !important;
 }
  
 a {
