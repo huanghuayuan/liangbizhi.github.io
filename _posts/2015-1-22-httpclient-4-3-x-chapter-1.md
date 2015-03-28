@@ -21,7 +21,7 @@ HttpClient最重要的功能是处理HTTP方法。一个HTTP方法涉及一个�
 
 这里是一个请求处理过程例子：
 
-{% highlight java %}
+{% highlight java linenos %}
 
     CloseableHttpClient httpclient = HttpClients.createDefault();
     HttpGet httpget = new HttpGet("http://localhost/");
@@ -42,15 +42,15 @@ HttpClient支持所有`HTTP/1.1`定义的方法，包括：`GET`，`HEAD`，`POS
 
 请求URI是一个统一资源标记符，标记了请求的资源。HTTP请求`URIs`包含了请求协议，主机名，端号（可选），资源路径，查询字符串（可选）和片信息（可选）。
 
-{% highlight java %}
+{% highlight java linenos %}
 
         HttpGet httpget = new HttpGet("http://www.google.com/search?hl=en&q=httpclient&btnG=Google+Search&aq=f&oq=");
 
 {% endhighlight %}
-        
+
 HttpClient提供了`URIBuilder`工具类来简化请求`URIs`的创建和修改。
 
-{% highlight java %}
+{% highlight java linenos %}
 
     URI uri = new URIBuilder()
         .setScheme("http")
@@ -65,7 +65,7 @@ HttpClient提供了`URIBuilder`工具类来简化请求`URIs`的创建和修改�
     System.out.println(httpget.getURI());
 
 {% endhighlight %}
-    
+
 标准输出：
 
     http://www.google.com/search?q=httpclient&btnG=Google+Search&aq=f&oq=
@@ -74,7 +74,7 @@ HttpClient提供了`URIBuilder`工具类来简化请求`URIs`的创建和修改�
 
 HTTP响应是服务器接收并解析请求消息后返回给客户端的消息。该消息的第一行包含了协议版本（后面紧跟着一个数字状态码）和关联的文本短语。
 
-{% highlight java %}
+{% highlight java linenos %}
 
     HttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, "OK");
 
@@ -84,24 +84,24 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
     System.out.println(response.getStatusLine().toString());
 
 {% endhighlight %}
-    
+
 标准输出：
 
     HTTP/1.1
     200
     OK
     HTTP/1.1 200 OK
-    
+
 ### 1.1.3. 消息头
 
 一个HTTP消息可以包含许多消息头，它们用来描述消息的属性，比如消息的内容，类型等。HttpClient提供方法来获取、增加、移除和枚举消息头。
 
-{% highlight java %}
+{% highlight java linenos %}
 
     HttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1,HttpStatus.SC_OK, "OK");
     response.addHeader("Set-Cookie", "c1=a; path=/; domain=localhost");
     response.addHeader("Set-Cookie", "c2=b; path=\"/\", c3=c; domain=\"localhost\"");
-    
+
     Header h1 = response.getFirstHeader("Set-Cookie");  //第一个消息头
     System.out.println(h1);
     Header h2 = response.getLastHeader("Set-Cookie");
@@ -116,10 +116,10 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
     Set-Cookie: c1=a; path=/; domain=localhost
     Set-Cookie: c2=b; path="/", c3=c; domain="localhost"
     2
-    
+
 获取所有的消息头最有效的方法是使用`HeaderIterator`接口。
 
-{% highlight java %}
+{% highlight java linenos %}
 
     HttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, "OK");
     response.addHeader("Set-Cookie", "c1=a; path=/; domain=localhost");
@@ -137,10 +137,10 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
 
     Set-Cookie: c1=a; path=/; domain=localhost
     Set-Cookie: c2=b; path="/", c3=c; domain="localhost"
-    
+
 它同时提供了方便的方法，把HTTP消息解析成独立的消息头元素。
 
-{% highlight java %}
+{% highlight java linenos %}
 
     HttpResponse response = new BasicHttpResponse(HttpVersion.HTTP_1_1, HttpStatus.SC_OK, "OK");
     response.addHeader("Set-Cookie", "c1=a; path=/; domain=localhost");
@@ -149,7 +149,7 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
     HeaderElementIterator it = new BasicHeaderElementIterator(response.headerIterator("Set-Cookie"));
 
     while (it.hasNext()) {
-        HeaderElement elem = it.nextElement(); 
+        HeaderElement elem = it.nextElement();
         System.out.println(elem.getName() + " = " + elem.getValue());
         NameValuePair[] params = elem.getParameters();
         for (int i = 0; i < params.length; i++) {
@@ -158,7 +158,7 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
     }
 
 {% endhighlight %}
-    
+
 标准输出：
 
     c1 = a
@@ -168,7 +168,7 @@ HTTP响应是服务器接收并解析请求消息后返回给客户端的消息�
     path=/
     c3 = c
     domain=localhost
-    
+
 ### 1.1.4. HTTP实体
 
 HTTP消息可以携带与请求或响应相关的内容实体。实体可以出现在某些请求和某些响应中，但不是必须的。使用了实体的请求被称为“实体封装请求(entity enclosing requests)”。HTTP协议定义了两个实体封装请求方法：`POST`和`PUT`。响应一般封装了内容实体。这个规则也存在异常，比如对`HEAD`方法的响应，和`204 No Content`，`304 Not Modified`，`205 Reset Content`响应。
@@ -199,11 +199,11 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 当为发送消息创建一个实体时，实体创建器必须提供这些元数据。
 
-{% highlight java %}
+{% highlight java linenos %}
 
-	StringEntity myEntity = new StringEntity("important message", 
+	StringEntity myEntity = new StringEntity("important message",
 	   ContentType.create("text/plain", "UTF-8"));
-	
+
 	System.out.println(myEntity.getContentType());
 	System.out.println(myEntity.getContentLength());
 	System.out.println(EntityUtils.toString(myEntity));
@@ -222,7 +222,7 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 为了保证系统资源的适当释放，我们必须关闭与实体相关的内容流，或者关闭响应本身。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	HttpGet httpget = new HttpGet("http://localhost/");
@@ -251,7 +251,7 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 然而有些情况，当只想接受响应内容的一小部分时，在处理剩下的内容时会造成性能损失，并使得连接重用太高，此时我们可以关闭响应来终止内容流。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	HttpGet httpget = new HttpGet("http://localhost/");
@@ -276,7 +276,7 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 推荐使用实体的`HttpEntity#getContent()`或`HttpEntity#writeTo(OutputStream)`方法来消耗它的内容。HttpClient也提供了EntityUtils 类，它提供了几个静态方法以更简单地读取实体的内容或信息。除了直接读取`java.io.InputStream`外，我们可以使用这个类的方法，以字符串或字节数组的方式获取实体的全部内容。而然，强烈地不鼓励使用`EntityUtils`，除非响应实体来源于可信任的HTTP服务器并且是有限长度的。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	HttpGet httpget = new HttpGet("http://localhost/");
@@ -299,7 +299,7 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 在某些情况下，需要能多次读取实体内容。此时实体内容必须经过某些方式缓存起来，要么在内存中，要么在磁盘上。最简单的实现方法是使用`BufferedHttpEntity`类来封装原实体。这将会使得原实体内容被读入内存缓冲区中。后面我们将可以重复读取封装器里面的内容。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpResponse response = <...>
 	HttpEntity entity = response.getEntity();
@@ -313,12 +313,12 @@ HTTP消息可以携带与请求或响应相关的内容实体。实体可以出�
 
 HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出实体内容。这些类的实例被实体封装请求（如`POST`和`PUT`）关联起来。HttpClient为大多数的通用数据容器（如字符串，字节数组，输入流和文件）提供了几个类：`StringEntity`，`ByteArrayEntity`，`InputStreamEntity`和`FileEntity`。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	File file = new File("somefile.txt");
-	FileEntity entity = new FileEntity(file, 
-	    ContentType.create("text/plain", "UTF-8"));        
-	
+	FileEntity entity = new FileEntity(file,
+	    ContentType.create("text/plain", "UTF-8"));
+
 	HttpPost httppost = new HttpPost("http://localhost/action.do");
 	httppost.setEntity(entity);
 
@@ -330,7 +330,7 @@ HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出
 
 许多应用需要模拟提交HTML表单的过程，例如，为了登陆一个web应用或者提交输入的数据。HttpClient提供了实体类`UrlEncodedFormEntity`以方便处理该过程。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	List<NameValuePair> formparams = new ArrayList<NameValuePair>();
 	formparams.add(new BasicNameValuePair("param1", "value1"));
@@ -349,7 +349,7 @@ HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出
 
 基于传送的HTTP消息属性，通常推荐由HttpClient来选择最合适的传送编码。然而，有时候通过设置`HttpEntity#setChunked()`为`true`，通知HttpClient使用块编码更好。请注意HttpClient将仅仅使用此标记作为一个暗示。当使用的HTTP协议版本不支持块编码时，例如HTTP/1.0，那么这个值就会被忽略。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	StringEntity entity = new StringEntity("important message",
 	        ContentType.create("plain/text", Consts.UTF_8));
@@ -363,13 +363,13 @@ HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出
 
 使用`ResponseHandler`接口是处理响应最简单、最方便的方式，该接口包含了`handleResponse(HttpResponse response)`方法。这个方法使得用户完全不用关心底层连接管理。使用`ResponseHandler`时，无论请求处理成功或出现异常，HttpClient都将会自动保证连接的释放。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	HttpGet httpget = new HttpGet("http://localhost/json");
-	
+
 	ResponseHandler<MyJsonObject> rh = new ResponseHandler<MyJsonObject>() {
-	
+
 	    @Override
 	    public JsonObject handleResponse(
 	            final HttpResponse response) throws IOException {
@@ -398,10 +398,10 @@ HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出
 
 HttpClient接口代表了大部分重要的HTTP请求处理规则。它规定了不受限制的或具体细节的请求处理过程，而且隐藏了连接管理，状态管理，授权和重定向处理个人实现等的细节。这使得更容易使用额外的功能，例如响应内容缓存，来修饰接口。对于一些专用处理程序或负责处理HTTP协议某具体方面（如重定向、授权管理或决定连接持续时间）的策略接口实现，HttpClient实现一般情况下都充当着一个幌子（facade）。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	ConnectionKeepAliveStrategy keepAliveStrat = new DefaultConnectionKeepAliveStrategy() {
-	
+
 	    @Override
 	    public long getKeepAliveDuration(
 	            HttpResponse response,
@@ -414,7 +414,7 @@ HttpClient接口代表了大部分重要的HTTP请求处理规则。它规定了
 	        }
 	        return keepAlive;
 	    }
-	
+
 	};
 	CloseableHttpClient httpclient = HttpClients.custom()
 	        .setKeepAliveStrategy(keepAliveStrat)
@@ -430,7 +430,7 @@ HttpClient实现是线程安全的。推荐使用这个类的同一实例来处�
 
 当一个`CloseableHttpClient`实例不再需要并将要超出与之关联的连接管理程序范围时，必须通过`CloseableHttpClient#close()`方法关闭它。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	try {
@@ -460,7 +460,7 @@ HttpClient实现是线程安全的。推荐使用这个类的同一实例来处�
 
 可以使用`HttpClientContext`适配器类来简化上下文状态的相互作用。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	HttpContext context = <...>
 	HttpClientContext clientContext = HttpClientContext.adapt(context);
@@ -475,14 +475,14 @@ HttpClient实现是线程安全的。推荐使用这个类的同一实例来处�
 
 下面的例子里，被初始请求设置的请求配置将会保存在执行上下文中，通过共享同一个上下文，请求配置还被传播到多个连续的请求中。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	RequestConfig requestConfig = RequestConfig.custom()
 	        .setSocketTimeout(1000)
 	        .setConnectTimeout(1000)
 	        .build();
-	
+
 	HttpGet httpget1 = new HttpGet("http://localhost/1");
 	httpget1.setConfig(requestConfig);
 	CloseableHttpResponse response1 = httpclient.execute(httpget1, context);
@@ -535,10 +535,10 @@ HttpClient认为非实体封装方法，例如`GET`和`HEAD`具有幂等性；�
 
 为了能够自定义异常恢复机制，可以提供`HttpRequestRetryHandler`接口的一个实现。
 
-{% highlight java %}
-	
+{% highlight java linenos %}
+
 	HttpRequestRetryHandler myRetryHandler = new HttpRequestRetryHandler() {
-	
+
 	    public boolean retryRequest(
 	            IOException exception,
 	            int executionCount,
@@ -572,7 +572,7 @@ HttpClient认为非实体封装方法，例如`GET`和`HEAD`具有幂等性；�
 	        }
 	        return false;
 	    }
-	
+
 	};
 	CloseableHttpClient httpclient = HttpClients.custom()
 	        .setRetryHandler(myRetryHandler)
@@ -594,25 +594,25 @@ HTTP协议拦截器是一个实现了HTTP协议某个具体方面的程序。一
 
 这是一个本地上下文如何在连续请求之间保持一个处理状态的例子：
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.custom()
 	        .addInterceptorLast(new HttpRequestInterceptor() {
-	
+
 	            public void process(
 	                    final HttpRequest request,
 	                    final HttpContext context) throws HttpException, IOException {
 	                AtomicInteger count = (AtomicInteger) context.getAttribute("count");
 	                request.addHeader("Count", Integer.toString(count.getAndIncrement()));
 	            }
-	
+
 	        })
 	        .build();
-	
+
 	AtomicInteger count = new AtomicInteger(1);
 	HttpClientContext localContext = HttpClientContext.create();
 	localContext.setAttribute("count", count);
-	
+
 	HttpGet httpget = new HttpGet("http://localhost/");
 	for (int i = 0; i < 10; i++) {
 	    CloseableHttpResponse response = httpclient.execute(httpget, localContext);
@@ -629,7 +629,7 @@ HTTP协议拦截器是一个实现了HTTP协议某个具体方面的程序。一
 
 除了那些HTTP协议明确禁止的（要求用户干预的）之外，HttpClient自动处理所有类型的重定向。`POST`和`PUT`请求出现的`See Other`（状态码303）重定向会根据HTTP规范转换为`GET`请求。我们可以使用一个自定义重定向策略来减少`POST`方法被HTTP规范强迫自动重定向的限制。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	LaxRedirectStrategy redirectStrategy = new LaxRedirectStrategy();
 	CloseableHttpClient httpclient = HttpClients.custom()
@@ -640,7 +640,7 @@ HTTP协议拦截器是一个实现了HTTP协议某个具体方面的程序。一
 
 HttpClient必须在它的执行过程中经常地重写请求信息。默认`HTTP/1.0`和`HTTP/1.1`一般使用相对请求`URIs`。同样地，原请求可能会被重定向到其他位置多次。最终解释的绝对HTTP位置可以使用原请求和上下文来创建。实用方法`URIUtils#resolve`可以创建那些用来生成最终请求的解析的绝对`URI`。此方法包含了重定向请求或原请求的最后片段的标记符。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	CloseableHttpClient httpclient = HttpClients.createDefault();
 	HttpClientContext context = HttpClientContext.create();

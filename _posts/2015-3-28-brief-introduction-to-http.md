@@ -79,7 +79,7 @@ HTTP报文由起始行、首部和实体三个部分组成。
 	Accept-Language: zh-CN,zh;q=0.8,en;q=0.6
 	Cookie: Hm_lvt_7e40c0291a48934d0bc390fc85fb36db=1424791563; Hm_lpvt_7e40c0291a48934d0bc390fc85fb36db=1426303204
 	If-Modified-Since: Thu, 05 Mar 2015 14:59:08 GMT
-	
+
 
 第一行为起始行，它由三部分组成，以空格隔开。第一部分为方法，用来告知服务器要做些什么。这里的`GET`方法描述了浏览器希望以GET的方式获得服务器资源。常用的HTTP方法还有`HEAD`、`POST`、`PUT`、`TRACE`、`OPTIONS`、`DELETE`等，但并不是所有服务器都实现了它们。第二部分`/`，表示所请求资源为根目录。第三部分`HTTP/1.1`，描述了报文所使用的HTTP版本为1.1。
 
@@ -119,10 +119,10 @@ HTTP报文由起始行、首部和实体三个部分组成。
 	X-Cache-Hits: 1
 	X-Timer: S1426319418.681372,VS0,VE0
 	Vary: Accept-Encoding
-	
+
 
 同样地，第一行为起始行（响应行）。包含了响应报文使用的HTTP版本、数字状态码以及描述性文本短语。状态码用来告诉客户端发生了什么事情。状态码一般分为五类：
-	
+
 | 整体范围 | 已定义范围 | 分类			|
 |:--------|:----------|:------------|
 | 100~199 |	100~101	  |	信息提示 	|
@@ -154,7 +154,7 @@ HTTP报文由起始行、首部和实体三个部分组成。
 因为响应状态为304 Not Modified，所以这里并没有实体内容。
 
 上面只是一个例子，只涉及到一部分HTTP首部和简单的介绍。更多内容可查阅相关资料。
-	
+
 ## 2.3 细节优化
 
 实际上，人们总是希望网页打开得越快越好——没人愿意等待一个大半天也打不开的网站。在这个互联网爆炸的年代，各种性能优化的重要性不言而喻。
@@ -190,7 +190,7 @@ HTTP允许客户端打开多条连接，并行地执行多个HTTP事务。这可
 
 了解了基本的HTTP原理，我们可以自己写一个简单的服务器来玩玩，此程序默认会打开8080端口来监听请求连接。当接收到请求报文后程序将直接打印请求报文到控制台；接着我们还可以按照HTTP协议格式发送响应报文给客户端。还行吧^_^。
 
-{% highlight java %}
+{% highlight java linenos %}
 
 	import java.io.*;
 	import java.net.ServerSocket;
@@ -198,11 +198,11 @@ HTTP允许客户端打开多条连接，并行地执行多个HTTP事务。这可
 	import java.net.InetAddress;
 	import java.util.Scanner;
 	import java.util.Date;
-	
+
 	public class SimpleWebServer {
 	    public static void main(String[] args) {
 	        int port = args.length > 0 ? Integer.valueOf(args[0]) : 8080;
-	
+
 	        ServerSocket serverSocket = null;
 	        try {
 	            serverSocket = new ServerSocket(port);
@@ -211,14 +211,14 @@ HTTP允许客户端打开多条连接，并行地执行多个HTTP事务。这可
 	            System.out.println("服务器启动失败！端口" + port + "正在使用！");
 	            System.exit(0);
 	        }
-	
+
 	        while(true) {
 	            try {
 	            	System.out.println("正在监听端口" + port + "...\t" + new Date());
 	                Socket socket = serverSocket.accept();
 	                InetAddress cname = socket.getInetAddress();
 	                System.out.println("-->\t请求来自 " + cname.getHostAddress() + "\t" + new Date());
-	
+
 	                InputStream inputStream = socket.getInputStream();
 	                int code = 0;
 	                int count = 0;
