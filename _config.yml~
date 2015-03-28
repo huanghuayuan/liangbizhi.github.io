@@ -1,8 +1,6 @@
 baseurl: /
 safe: false
-markdown: redcarpet
-redcarpet:
-    extensions: ["tables"]
+markdown: kramdown
 highlighter: pygments
 excerpt_seperator: "\n\n\n"
 paginate: 8
