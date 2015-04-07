@@ -1,0 +1,18 @@
+markdown: redcarpet
+redcarpet:
+    extensions: ["tables"]
+permalink: /:title/
+url: http://liangbizhi.github.io
+name: Bill Liang
+author: LiangBizhi
+qq: 
+email: liangbizhi1993@gmail.com
+duoshuo: liangbizhi
+beian: 
+cnzz: 
+weibo: 1037054042
+github: liangbizhi
+highlighter: pygments
+safe: true
+paginate: 20
+about: "my blog here, template test"
