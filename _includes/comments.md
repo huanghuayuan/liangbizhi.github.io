@@ -5,6 +5,7 @@
 	<div class="ds-thread" />
 	{% endif %}	
 	<script type="text/javascript">
+	/* duoshuo */
 	var duoshuoQuery = {short_name:"{{ site.duoshuo }}"};
 	(function() {
 		var ds = document.createElement('script');
