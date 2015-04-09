@@ -5,4 +5,8 @@ comments: yes
 thread: 616
 ---
 
-来了，就留下你的足迹吧。
+你一定有话想留下，对吗(^_^)？
+
+Why not leave something here ?
+
+はじめまして、よろしくお願いします！

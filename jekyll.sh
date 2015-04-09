@@ -1,2 +1,2 @@
 #!/bin/bash
-jekyll serve --watch  -d /tmp/jekyll
+jekyll serve --watch -d /tmp/jekyll

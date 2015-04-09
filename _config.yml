@@ -11,8 +11,9 @@ duoshuo: liangbizhi
 beian: 
 cnzz: 
 weibo: 1037054042
+appkey: 3989909957
 github: liangbizhi
 highlighter: pygments
+style: "#4184f3"
 safe: true
 paginate: 20
-about: "my blog here, template test"
