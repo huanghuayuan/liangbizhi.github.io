@@ -4,7 +4,7 @@ layout: page
 comments: no
 ---
 
-这个博客开始于我的大学第一学期，虽然没什么人知晓，希望我能坚持下去。
+这个博客开始于我的大三第一学期，虽然没什么人知晓，希望我能坚持下去。
 
 认真思考，表达清晰。这也是我的目标之一。
 
@@ -18,7 +18,7 @@ comments: no
 * 霓虹文化爱好者。
 * 哎呦，不错哦。
 * Ingress Agent. Explore the world.
-* Google fans.
+* Google fans.（使用Google Chrome浏览器浏览此博客效果更佳）
 * Uh, programming.
 
 Update:
