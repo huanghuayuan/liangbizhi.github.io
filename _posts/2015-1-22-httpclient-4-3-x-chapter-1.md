@@ -2,10 +2,10 @@
 layout: post
 title: HttpClient4.3.x第一章入门教程
 categories: Java
-tags: httpclient 翻译
+tags: HTTP 翻译
 comments: true
 ---
-最近想写[一个网络爬虫](https://github.com/liangbizhi/WebCrawler "Github")，要用到apache的httpclient项目（HttpClient4.3.x），在官网学习该项目一些基础内容，顺便翻译[官方文档](http://hc.apache.org/httpcomponents-client-4.3.x/tutorial/html/fundamentals.html "跳转")。
+最近想写一个网络爬虫，要用到apache的httpclient项目（HttpClient4.3.x），在官网学习该项目一些基础内容，顺便翻译[官方文档](http://hc.apache.org/httpcomponents-client-4.3.x/tutorial/html/fundamentals.html "跳转")。
 
 
 

@@ -1,8 +1,8 @@
 ---
 layout: post
 title: 浅谈HTTP协议
-categories: HTTP
-tags: http
+categories: 网络
+tags: HTTP
 comments: true
 ---
 平常我们在浏览器输入一个网址，点击一个超链接，就能访问网页。这再简单不过了，下面就来谈谈打开网页这一过程都发生了什么。
