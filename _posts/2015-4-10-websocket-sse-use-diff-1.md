@@ -2,7 +2,7 @@
 layout: post
 title: Server-Sent Events与WebSockets使用和比较（1）
 categories: 前端
-tags: Server-Sent-Event WebSocket
+tags: Server-Sent-Event WebSocket 翻译
 comments: true
 ---
 
