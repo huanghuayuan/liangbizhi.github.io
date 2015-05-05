@@ -14,7 +14,7 @@ comments: true
 	<link rel="stylesheet" type="text/css" href="sheet1.css" media="all" />
 {% endhighlight %}
 
-	rel代表“关系”（relation），这里为stylesheet。还可以为alternate stylesheet以定义候选样式表，如果是这样还需要link标记的另外一个属性title以表示候选样式表的标题；media说明这个样式表要应用于哪一种表现媒体。
+rel代表“关系”（relation），这里为stylesheet。还可以为alternate stylesheet以定义候选样式表，如果是这样还需要link标记的另外一个属性title以表示候选样式表的标题；media说明这个样式表要应用于哪一种表现媒体。
 
 * `@import`指令。它出现在只能出现在样式里，而且要放在CSS规则之前。`@import`指令无法指定候选样式表，但同样可以控制样式表应用于哪一种媒体。注意它是分号结尾的。
 
@@ -23,7 +23,7 @@ comments: true
 	@import url(sheet2.css) screen;
 {% endhighlight %}
 
-* 如果较老的浏览器不能识别<style>标签，就会将其统统忽略掉。不过这些标记中的声明不一定会被忽略，会出现在页面的上面！为了解决这个问题，可以如下操作，能理解CSS的浏览器仍能读取样式。
+* 如果较老的浏览器不能识别`<style>`标签，就会将其统统忽略掉。不过这些标记中的声明不一定会被忽略，会出现在页面的上面！为了解决这个问题，可以如下操作，能理解CSS的浏览器仍能读取样式。
 
 {% highlight html linenos %}
 	<style type="text/css"><!--
@@ -194,13 +194,15 @@ comments: true
 * 选择器重要性。有时某个声明可能非常重要，超过了所有其他声明，并允许在这些声明结束分号之前插入!important来标志。它的声明并没有特殊的特殊值，不过应与非重要声明分开考虑。**如果一个重要声明和一个非重要声明冲突，重要声明总是胜出**。
 
 * 继承值是没有特殊性的，所以特殊性为0的通配符选择器将胜出，如：
-	
+
+{% highlight css linenos %}
 	* {color: gray;}
 	h1#page-title {color: black;}
 
 	<h1 id="page-title">Hello<em>World</em></h1>
+{% endhighlight %}
 
-那么<em>元素中的文字将是灰色的。
+那么`<em>`元素中的文字将是灰色的。
 
 * 某些属性是不能继承的。例如，border属性，还有大多数的框模型属性（外边距、内边距、背景和边框）。
 
@@ -212,9 +214,9 @@ comments: true
 
 * 相对长度单位。三种em、ex和px。
 
-	em定义为一种给定字体的font-size值。如果一个元素的font-size为14像素，那么对于该元素，1em = 14像素。
-	ex指所用字体中小写x的高度。
-	px其实也是先对长度。
+em定义为一种给定字体的font-size值。如果一个元素的font-size为14像素，那么对于该元素，1em = 14像素。
+ex指所用字体中小写x的高度。
+px其实也是先对长度。
 
 # 字体
 
@@ -266,7 +268,17 @@ comments: true
 	2. 完全脱离了标准文档流。
 	3. 随即拥有偏移属性和z-index属性。
 	4. **当未设置偏移量时**，无论是否存在已定位祖先元素，都保持在元素初始位置。
-	5. **当设置了偏移量时**：如果无已定位祖先元素，以<html>为偏移参照基准；如果有已定位祖先元素，以距其**最近的**已定位祖先元素为偏移参照基准。（已定位是指position为relative、absolute和fixed）。
+	5. **当设置了偏移量时**：如果无已定位祖先元素，以`<html>`
+	6. 
+	7. 
+	8. 
+	9. 
+	10. 
+	11. 
+	12. 
+	13. 
+	14. 
+	15. 为偏移参照基准；如果有已定位祖先元素，以距其**最近的**已定位祖先元素为偏移参照基准。（已定位是指position为relative、absolute和fixed）。
 	6. 当一个元素设置绝对定位，没有设置宽度时，元素的宽度根据内容进行调整。
 	
 * 使用absolute实现横向两列布局。常用于一列固定宽度，另一列宽度自适应的情况。主要应用：设置自适应宽度元素的父元素relative相对定位；设置自适应宽度元素绝对定位absolute。
