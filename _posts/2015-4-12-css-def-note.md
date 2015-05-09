@@ -51,9 +51,9 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 * 类选择器
 
 {% highlight css linenos %}
-	*.warning {color: red;}			// 通配符
-	.warning {color: red;}			// 当然可以省略通配符
-	p.warning {font-weight: bold}	// 只应用于p元素
+	*.warning {color: red;}			/* 通配符 */
+	.warning {color: red;}			/* 当然可以省略通配符 */
+	p.warning {font-weight: bold}	/* 只应用于p元素 */
 {% endhighlight %}
 	
 	有一种情况叫多类选择器。如`<p class="urgent warning">`时，通过把两个（多个）类选择器链接在一起，仅可以选择同时包含这些类名的元素（类名的顺序可以不限）。
@@ -61,7 +61,7 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 {% highlight css linenos %}
 	.warning {font-weight: bold;}
 	.urgent {font-style: italic;}
-	p.warning.urgent {background: silver}	// IE7之前的版本不能正确地处理多类选择器，它们可能会识别为p.urgent
+	p.warning.urgent {background: silver}	/* IE7之前的版本不能正确地处理多类选择器，它们可能会识别为p.urgent */
 {% endhighlight %}
 
 * ID选择器。ID属性不允许有以空格分隔的词列表。
@@ -73,22 +73,22 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 > IE5/Mac和IE6/Win之前，IE不支持属性选择器。
 
 {% highlight css linenos %}
-	// 1. 简单属性选择器
-	h1[class] {color: silver;}			// 选择有class属性的所有h1元素
-	*[title] {font-weight: bold;}		// 选择所有包含title属性的标签元素
-	a[href][title] {font-weight: bold;} // 选择同时具有href和title属性的a元素
+	/* 1. 简单属性选择器 */
+	h1[class] {color: silver;}			/* 选择有class属性的所有h1元素 */
+	*[title] {font-weight: bold;}		/* 选择所有包含title属性的标签元素 */
+	a[href][title] {font-weight: bold;} /* 选择同时具有href和title属性的a元素 */
 
-	// 2. 根据具体属性值选择
-	p[class="urgent warning"] {color: red;}		// 选择clss属性为urgent waring的p元素，注意class属性值必须完全字符串匹配。
-	a[href="a.html"][title="a page"] {font-size: 200%;}		// 多个属性
+	/* 2. 根据具体属性值选择 */
+	p[class="urgent warning"] {color: red;}		/* 选择clss属性为urgent waring的p元素，注意class属性值必须完全字符串匹配。 */
+	a[href="a.html"][title="a page"] {font-size: 200%;}		/* 多个属性 */
 
-	// 3. 根据部分属性值选择
-	p[class~="warning"] {color: red;}		// 根据属性值中出现的一个用空格分隔的词来完成选择
-	[foo^="bar"]		// 选择foo属性值以“bar”开头的所有元素
-	[foo$="bar"]		// 选择foo属性值以“bar”结尾的所有元素
-	[foo*="bar"]		// 选择foo属性值包含“bar”子串的所有元素
+	/* 3. 根据部分属性值选择 */
+	p[class~="warning"] {color: red;}		/* 根据属性值中出现的一个用空格分隔的词来完成选择 */
+	[foo^="bar"]		/* 选择foo属性值以“bar”开头的所有元素 */
+	[foo$="bar"]		/* 选择foo属性值以“bar”结尾的所有元素 */
+	[foo*="bar"]		/* 选择foo属性值包含“bar”子串的所有元素 */
 
-	// 3. 特定属性选择类型
+	/* 3. 特定属性选择类型 */
 	*[lang|="en"] {color: red;}
 	img[src*="space"] {border: 5px solid red;}
 {% endhighlight %}
@@ -96,34 +96,35 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 * 后代选择器（学习这个选择器的时候请把文档结构想象成为一棵树）
 
 {% highlight css linenos %}
-	//	<div>
-	//		<ul>
-	//			<li id="1">Some text</li>
-	//			<li id="2">Some text</li>
-	//			<li id="3">Some text</li>
-	//		</ul>
-	//		<ol>
-	//			<li id="4">Some text</li>
-	//			<li id="5">Some text</li>
-	//			<li id="6">Some text</li>
-	//		</ol>
-	//	</div>
+	/*	<div>
+			<ul>
+				<li id="1">Some text</li>
+				<li id="2">Some text</li>
+				<li id="3">Some text</li>
+			</ul>
+			<ol>
+				<li id="4">Some text</li>
+				<li id="5">Some text</li>
+				<li id="6">Some text</li>
+			</ol>
+		</div> */
+ 	
 
-	// 1. 后代元素选择器
-	div li {color: gray;}				// 选择div元素后代的所有li元素，id为1,2,3,4,5,6的li元素都会被选择
+	/* 1. 后代元素选择器 */
+	div li {color: gray;}				/* 选择div元素后代的所有li元素，id为1,2,3,4,5,6的li元素都会被选择 */
 	ul ol ul em {color: gray;}
-	blockquote b, p b {color: gray;}	// 作为块引用或段落的b元素中的文本
+	blockquote b, p b {color: gray;}	/* 作为块引用或段落的b元素中的文本 */
 
-	// 2. 子元素选择器（注意不是后代元素）
-	h1 > strong {color: red;}			// 选择作为h1元素子元素的所有strong元素
-	ul > li {color: red;}				// id为1,2,3的li元素会被选择
+	/* 2. 子元素选择器（注意不是后代元素） */
+	h1 > strong {color: red;}			/* 选择作为h1元素子元素的所有strong元素 */
+	ul > li {color: red;}				/* id为1,2,3的li元素会被选择 */
 
-	// 3. 相邻兄弟元素选择器
-	// 注意：是元素后面出现的兄弟元素
-	// 注意：一个结点符只能选择两个相邻弟兄的第二个元素
-	li + li {color: red;}				// id为2,3和5,6的元素会被选择
-	ol + ul {color: red;}				// 失败，因为ol后没有ul兄弟元素
-	ul + ol {colro: red;}				// 选择的是ol元素
+	/* 3. 相邻兄弟元素选择器 */
+	/* 注意：是元素后面出现的兄弟元素 */
+	/* 注意：一个结点符只能选择两个相邻弟兄的第二个元素 */
+	li + li {color: red;}				/* id为2,3和5,6的元素会被选择 */
+	ol + ul {color: red;}				/* 失败，因为ol后没有ul兄弟元素 */
+	ul + ol {colro: red;}				/* 选择的是ol元素 */
 
 {% endhighlight %}
 
@@ -158,16 +159,16 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 
 	4. 语言选择
 
-	*:lang(fr) {font-style: italic;}  // 把所有的法语显示成斜体
+	*:lang(fr) {font-style: italic;}  /* 把所有的法语显示成斜体 */
 
 2. 伪元素选择器
 	
 	伪元素能够在文档中插入假想的元素，从而得到某种效果。
 
 	{% highlight css linenos %}
-		h2:first-letter {color: red;}		// h2中第一个字母大写
+		h2:first-letter {color: red;}		/* h2中第一个字母大写 */
 
-		p:first-line {color: purple;}		// 每一段显示地第一行
+		p:first-line {color: purple;}		/* 每一段显示地第一行 */
 	{% endhighlight %}
 
 	> 注意这两个伪元素所允许的属性是有限制的，详见书本。
@@ -175,7 +176,7 @@ rel代表“关系”（relation），这里为stylesheet。还可以为alternat
 	设置之前和之后元素的样式
 
 	{% highlight css linenos %}
-		h2:before {content: "<<"; color: silver;}	// 在h2前加一对小于号
+		h2:before {content: "<<"; color: silver;}	/* 在h2前加一对小于号 */
 		body:after {content: " The End ";}
 	{% endhighlight %}
 
@@ -269,16 +270,7 @@ px其实也是先对长度。
 	3. 随即拥有偏移属性和z-index属性。
 	4. **当未设置偏移量时**，无论是否存在已定位祖先元素，都保持在元素初始位置。
 	5. **当设置了偏移量时**：如果无已定位祖先元素，以`<html>`
-	6. 
-	7. 
-	8. 
-	9. 
-	10. 
-	11. 
-	12. 
-	13. 
-	14. 
-	15. 为偏移参照基准；如果有已定位祖先元素，以距其**最近的**已定位祖先元素为偏移参照基准。（已定位是指position为relative、absolute和fixed）。
-	6. 当一个元素设置绝对定位，没有设置宽度时，元素的宽度根据内容进行调整。
+	6. 为偏移参照基准；如果有已定位祖先元素，以距其**最近的**已定位祖先元素为偏移参照基准。（已定位是指position为relative、absolute和fixed）。
+	7. 当一个元素设置绝对定位，没有设置宽度时，元素的宽度根据内容进行调整。
 	
 * 使用absolute实现横向两列布局。常用于一列固定宽度，另一列宽度自适应的情况。主要应用：设置自适应宽度元素的父元素relative相对定位；设置自适应宽度元素绝对定位absolute。
