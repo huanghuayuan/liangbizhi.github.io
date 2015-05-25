@@ -2,7 +2,7 @@
 layout: post
 title: BFC与hasLayout
 categories: 前端
-tags: CSS 浏览器
+tags: css 浏览器
 comments: true
 ---
 

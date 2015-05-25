@@ -2,7 +2,7 @@
 layout: post
 title: 各种清除浮动
 categories: 前端
-tags: CSS
+tags: css
 comments: true
 ---
 
