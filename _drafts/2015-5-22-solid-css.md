@@ -1,3 +1,10 @@
+---
+layout: post
+title: 高质量的CSS
+categories: 前端
+tags: css
+comments: true
+---
 # 怪异模式和DTD
 
 如果漏写DTD声明，Firfox仍然会按照标准模式来解析网页，但在IE（包括6、7、8）就会触发怪异模式。
