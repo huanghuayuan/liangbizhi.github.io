@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Hello World!
-categories: 胡思乱想
+categories: 扯淡的日常
 tags: 分享
 comments: true
 ---
