@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="keywords" content="前端,梁必志,liangbizhi,{{ site.name }},{{ page.title }}" />
-    <meta name="description" content="前端博客，博主脑袋有点异常。{{ page.title }}" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,首页" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。首页" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{% if page.path == 'index.html' %}{{ site.name }}{% else %}{% unless page.id %}{{ site.name }} - {% endunless %}{{ page.title }}{% endif %}</title>
+    <title>Bill Liang - 首页</title>
     <link rel="shortcut icon" href="/media/images/favicon.ico" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/iconfont.css" />
@@ -27,17 +27,17 @@
     <header id="header" class="">
         <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
         <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
-        <a class="header-right-picture" href="/about/" title="{{ site.author }}">
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
             <img class="header-picture" src="/media/images/avatar.png" alt="头像">
         </a>
     </header>
     <!--sidebar-->
     <nav id="sidebar">
         <div class="sidebar-profile">
-            <a href="/about/" title="{{ site.author }}">
+            <a href="/about/" title="liangbizhi">
                 <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
             </a>
-            <span class="sidebar-profile-name">{{ site.author }}</span>
+            <span class="sidebar-profile-name">liangbizhi</span>
         </div>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
@@ -87,7 +87,7 @@
         </ul>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
-                    <a class="sidebar-button-link " href="http://github.com/{{ site.github }}/" target="_blank">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
                         <i class="icon iconfont">&#xe605;</i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -117,15 +117,97 @@
     </nav>
     <div id="main" role="main">
         <header>
-            <h1>{{ page.title }}</h1>
+            <h1>首页</h1>
         </header>
         <article class="content">
-            {{ content }}
+            <section class="post">
+<ul class="listing">
+
+  
+  
+    
+    <li class="listing-seperator">2015</li>
+  
+  <li class="listing-item">
+    <time datetime="2015-03-28">2015-03-28</time>
+    <a href="/brief-introduction-to-http/" title="浅谈HTTP协议">浅谈HTTP协议</a>
+    
+  </li>
+
+  
+  
+  <li class="listing-item">
+    <time datetime="2015-01-22">2015-01-22</time>
+    <a href="/httpclient-4-3-x-chapter-1/" title="HttpClient4.3.x第一章入门教程">HttpClient4.3.x第一章入门教程</a>
+    
+  </li>
+
+  
+  
+    
+    <li class="listing-seperator">1793</li>
+  
+  <li class="listing-item">
+    <time datetime="1793-01-21">1793-01-21</time>
+    <a href="/learn-japanese-1/" title="日语学习（初级上）">日语学习（初级上）</a>
+    
+  </li>
+
+  
+  
+    
+    <li class="listing-seperator">1792</li>
+  
+  <li class="listing-item">
+    <time datetime="1792-12-01">1792-12-01</time>
+    <a href="/manga/" title="持续的动漫评论">持续的动漫评论</a>
+    
+  </li>
+
+  
+  
+  <li class="listing-item">
+    <time datetime="1792-10-26">1792-10-26</time>
+    <a href="/hello-world/" title="Hello World!">Hello World!</a>
+    
+  </li>
+
+</ul>
+
+<div id="post-pagination" class="paginator">
+
+  
+    
+    <a href="/"><前页</a>
+    
+  
+
+      
+      <a href="/">1</a>
+      
+
+    
+      
+      <span class="current-page">2</span>
+      
+    
+
+  
+    <span class="next disabled" >后页&gt;</span>
+  
+  (共25篇)
+</div>
+
+
+</section>
+
+
+
         </article>
         <footer>
         <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
-            <a href="http://github.com/{{ site.github }}/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
-            | © 2014 - {{site.time | date:"%Y"}} <a href="/about/">{{ site.author }}</a>
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
         </p>
         </footer>
     </div>

@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,Bootstrap栅格系统原理与使用" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。Bootstrap栅格系统原理与使用" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Bootstrap栅格系统原理与使用</title>
+    <link rel="shortcut icon" href="/media/images/favicon.ico" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/iconfont.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <!--<link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml" />-->
+    <!--[if lt IE 9]>
+    <div class="bsie">
+        您的浏览器版本过旧，请升级为Google Chrome浏览器进行浏览 :-D
+        <a href="javascript:void(0);" onclick="this.parentNode.style.display='none';">关闭</a>
+    </div>
+    <![endif]-->
+</head>
+
+<body>
+   <!--header-->
+    <header id="header" class="">
+        <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
+        <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
+            <img class="header-picture" src="/media/images/avatar.png" alt="头像">
+        </a>
+    </header>
+    <!--sidebar-->
+    <nav id="sidebar">
+        <div class="sidebar-profile">
+            <a href="/about/" title="liangbizhi">
+                <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
+            </a>
+            <span class="sidebar-profile-name">liangbizhi</span>
+        </div>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/">
+                        <i class="icon iconfont">&#xe603;</i>
+                        <span class="sidebar-button-desc">主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/categories/">
+                        <i class="icon iconfont">&#xe601;</i>
+                        <span class="sidebar-button-desc">分&nbsp;&nbsp;&nbsp;&nbsp;类</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/tags/">
+                        <i class="icon iconfont">&#xe609;</i>
+                        <span class="sidebar-button-desc">标&nbsp;&nbsp;&nbsp;&nbsp;签</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/guestbook/">
+
+                        <i class="icon iconfont">&#xe606;</i>
+                        <span class="sidebar-button-desc">留&nbsp;&nbsp;&nbsp;&nbsp;言</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link st-search-show-outputs" href="/about/">
+
+                        <i class="icon iconfont">&#xe604;</i>
+                        <span class="sidebar-button-desc">关&nbsp;&nbsp;&nbsp;&nbsp;于</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link " href="javascript:void(0);">
+
+                        <i class="icon iconfont">&#xe607;</i>
+                        <span class="sidebar-button-desc">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
+                        <i class="icon iconfont">&#xe605;</i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="https://plus.google.com/107690026046415883872" target="_blank">
+                        <i class="icon iconfont">&#xe608;</i>
+                        <span class="sidebar-button-desc">Google Plus</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://weibo.com/bikuqixinzhi" target="_blank">
+                        <i class="icon iconfont">&#xe602;</i>
+                        <span class="sidebar-button-desc">Weibo</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="#">
+                        <i class="icon iconfont">&#xe600;</i>
+                        <span class="sidebar-button-desc">RSS订阅</span>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main" role="main">
+        <header>
+            <h1>Bootstrap栅格系统原理与使用</h1>
+        </header>
+        <article class="content">
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-05-10">2015-05-10</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#bootstrap" title="bootstrap">bootstrap</a>&nbsp;
+  
+  <a href="/tags/#css" title="css">css</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>实现原理</h1>
+
+<p>通过定义容器大小，平均分为12份（可以重新编译LESS来修改此数值），在调整内外边距，结合Media Query就制作出了强大的响应栅格系统。</p>
+
+<h1>工作原理</h1>
+
+<ol>
+<li><p>数据行(.row)必须包含在容器（.container）中，以便为其赋予合适的对齐方式和内距(padding)。如：</p>
+
+<div class="container">
+    <div class="row"></div>
+</div></li>
+<li><p>在行(.row)中可以添加列(.column)，但列数之和不能超过平分的总列数，比如12。</p></li>
+<li><p>具体内容应当放置在列容器（column）之内，而且只有列（column）才可以作为行容器(.row)的直接子元素。</p></li>
+<li><p>通过设置内距（padding）从而创建列与列之间的间距。然后通过为第一列和最后一列设置负值的外距（margin）来抵消内距(padding)的影响。</p></li>
+</ol>
+
+<p>观察下图：</p>
+
+<p><img src="/media/images/bootstrap-grid-system/grid.jpg" alt="bootstrap grid"></p>
+
+<ol>
+<li><p>最外边框，带有一大片白色区域，就是相当于浏览器的可视区域。在Bootstrap框架的网格系统中带有响应式效果，其带有四种类型的浏览器（超小屏，小屏，中屏和大屏），其断点（像素的分界点）是768px、992px和1220px。</p></li>
+<li><p>第二个边框(1)相当于容器(.container)。针对不同的浏览器分辨率，其宽度也不一样：自动、750px、970px和1170px。</p></li>
+<li><p>２号横条阐述的是，将容器的行（.row）平分了12等份，也就是列。每个列都有一个“padding-left:15px”(图中粉红色部分)和一个“padding-right:15px”(图中紫色部分)。这样也导致了第一个列的padding-left和最后一列的padding-right占据了总宽度的30px，从而致使页面不美观，当然，如果你需要留有一定的间距，这个做法是不错的。</p></li>
+<li><p>３号横条就是行容器(.row),其定义了“margin-left”和”margin-right”值为”-15px”，用来抵消第一个列的左内距和最后一列的右内距。</p></li>
+<li><p>将行与列给合在一起就能看到横条4的效果。也就是我们期望看到的效果，第一列和最后一列与容器（.container）之间没有间距。 </p></li>
+</ol>
+
+<h1>怎么实现列组合</h1>
+
+<p>实现列组合方式非常简单，只涉及两个CSS两个特性：<strong>浮动</strong>与<strong>宽度百分比</strong>。</p>
+
+<p>在bootstrap.css文件中（以中屏为例）：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">/* 确保所有列左浮动 */
+.col-md-1, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-md-10, .col-md-11, .col-md-12 {
+    float: left;
+}
+
+/* 定义每个列组合的宽度（使用的百分比） */
+  .col-md-12 {
+    width: 100%;
+  }
+  .col-md-11 {
+    width: 91.66666667%;
+  }
+  .col-md-10 {
+    width: 83.33333333%;
+  }
+  .col-md-9 {
+    width: 75%;
+  }
+  .col-md-8 {
+    width: 66.66666667%;
+  }
+  .col-md-7 {
+    width: 58.33333333%;
+  }
+  .col-md-6 {
+    width: 50%;
+  }
+  .col-md-5 {
+    width: 41.66666667%;
+  }
+  .col-md-4 {
+    width: 33.33333333%;
+  }
+  .col-md-3 {
+    width: 25%;
+  }
+  .col-md-2 {
+    width: 16.66666667%;
+  }
+  .col-md-1 {
+    width: 8.33333333%;
+  }
+</code></pre></div>
+<h1>列偏移</h1>
+
+<p>有的时候，我们不希望相邻的两个列紧靠在一起，这个时候就可以使用列偏移（offset）功能来实现。使用列偏移也非常简单，只需要在列元素上添加类名“col-md-offset-*”(其中星号代表要偏移的列组合数)，那么具有这个类名的列就会向右偏移。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class=&quot;container&quot;&gt;
+    &lt;div class=&quot;row&quot;&gt;
+        &lt;div class=&quot;col-md-2&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;col-md-2 col-md-offset-1&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;col-md-2 col-md-offset-1&quot;&gt;2&lt;/div&gt;
+        &lt;div class=&quot;col-md-3 col-md-offset-1&quot;&gt;3&lt;/div&gt;
+    &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+<p>的显示效果为：</p>
+
+<p><img src="/media/images/bootstrap-grid-system/offset.jpg" alt="bootstrap grid"></p>
+
+<p>实现原理非常简单，就是利用十二分之一（1/12）的margin-left。然后有多少个offset，就有多少个margin-left。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.col-md-offset-12 {
+    margin-left: 100%;
+}
+.col-md-offset-11 {
+    margin-left: 91.66666667%;
+}
+.col-md-offset-10 {
+    margin-left: 83.33333333%;
+}
+/* ... */
+</code></pre></div>
+<p><strong>注意：</strong>使用”col-md-offset-*”对列进行向右偏移时，要保证列与偏移列的总数不超过12，不然会致列断行显示。</p>
+
+<h1>列排序</h1>
+
+<p>push推开，pull拉回。列排序其实就是改变列的方向，就是改变左右浮动，并且设置浮动的距离。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-4&quot;&gt;.col-md-4&lt;/div&gt;
+    &lt;div class=&quot;col-md-8&quot;&gt;.col-md-8&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+<p><img src="/media/images/bootstrap-grid-system/push-pull-1.jpg" alt="bootstrap grid"></p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;div class=&quot;container&quot;&gt;
+  &lt;div class=&quot;row&quot;&gt;
+    &lt;div class=&quot;col-md-4 col-md-push-8&quot;&gt;.col-md-4&lt;/div&gt;
+    &lt;div class=&quot;col-md-8 col-md-pull-4&quot;&gt;.col-md-8&lt;/div&gt;
+  &lt;/div&gt;
+&lt;/div&gt;
+</code></pre></div>
+<p><img src="/media/images/bootstrap-grid-system/push-pull-2.jpg" alt="bootstrap grid"></p>
+
+<p>原理是通过设置left和right来实现定位效果。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.col-md-push-8 {
+    left: 66.66666667%;
+}
+.col-md-pull-4 {
+    right: 33.33333333%;
+}
+</code></pre></div>
+<h1>参考</h1>
+
+<p><a href="http://www.imooc.com/learn/141">http://www.imooc.com/learn/141</a></p>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/solid-html/" class=""  >下一篇：高质量的HTML</a></p>
+    <p><a  href="/bootstrap-dropdownlist/" class=""  >上一篇：Bootstrap下拉菜单</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/bootstrap-grid-system" data-url="http://liangbizhi.github.io/bootstrap-grid-system/" data-title="Bootstrap栅格系统原理与使用" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
+        </article>
+        <footer>
+        <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
+        </p>
+        </footer>
+    </div>
+</body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61782303-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="/media/js/script.js"></script>
+</html>

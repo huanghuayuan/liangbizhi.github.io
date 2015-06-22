@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="keywords" content="前端,梁必志,liangbizhi,{{ site.name }},{{ page.title }}" />
-    <meta name="description" content="前端博客，博主脑袋有点异常。{{ page.title }}" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,SVG坐标系统和坐标变换" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。SVG坐标系统和坐标变换" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{% if page.path == 'index.html' %}{{ site.name }}{% else %}{% unless page.id %}{{ site.name }} - {% endunless %}{{ page.title }}{% endif %}</title>
+    <title>SVG坐标系统和坐标变换</title>
     <link rel="shortcut icon" href="/media/images/favicon.ico" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/iconfont.css" />
@@ -27,17 +27,17 @@
     <header id="header" class="">
         <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
         <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
-        <a class="header-right-picture" href="/about/" title="{{ site.author }}">
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
             <img class="header-picture" src="/media/images/avatar.png" alt="头像">
         </a>
     </header>
     <!--sidebar-->
     <nav id="sidebar">
         <div class="sidebar-profile">
-            <a href="/about/" title="{{ site.author }}">
+            <a href="/about/" title="liangbizhi">
                 <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
             </a>
-            <span class="sidebar-profile-name">{{ site.author }}</span>
+            <span class="sidebar-profile-name">liangbizhi</span>
         </div>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
@@ -87,7 +87,7 @@
         </ul>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
-                    <a class="sidebar-button-link " href="http://github.com/{{ site.github }}/" target="_blank">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
                         <i class="icon iconfont">&#xe605;</i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -117,15 +117,122 @@
     </nav>
     <div id="main" role="main">
         <header>
-            <h1>{{ page.title }}</h1>
+            <h1>SVG坐标系统和坐标变换</h1>
         </header>
         <article class="content">
-            {{ content }}
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-05-28">2015-05-28</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#svg" title="svg">svg</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>世界、视野和视窗的概念</h1>
+
+<p>视野是观察世界的一个矩形区域。而世界是无穷大的。</p>
+
+<p>我们绘画的SVG世界是无穷大的。</p>
+
+<p>视野是可以改变的，<code>svg</code>标签提供了<code>viewbox</code>属性来控制视野的范围。</p>
+
+<ul>
+<li>视窗：<code>svg</code>标签<code>width</code>、<code>height</code>属性控制。</li>
+<li>世界：<code>svg</code>标签之间的代码。</li>
+<li>视野：<code>svg</code>标签<code>viewbox</code>和<code>preserveAspectRatio</code>属性控制。</li>
+</ul>
+
+<p>视窗是浏览器开辟出来渲染SVG内容的区域。</p>
+
+<p>SVG中有多少条线，多少个矩形，什么颜色等等都在定义着SVG的世界。</p>
+
+<p>视野，也就是观察SVG这个世界的一个矩形区域。</p>
+
+<p>如果视窗与视野大小一致，那么浏览器就可以完美地把视野填充到视窗里。否则，如何填充就成为了一个问题，<code>preserveAspectRatio</code>属性就派上了用场。</p>
+
+<h1>图形分组</h1>
+
+<p>使用<code>g</code>标签来创建分组。</p>
+
+<p>在分组上设置的属性，子元素是可以继承下来的。</p>
+
+<p>分组上的<code>transform</code>属性定义坐标变换。</p>
+
+<p>分组可以嵌套使用。</p>
+
+<h1>坐标系统</h1>
+
+<p>笛卡尔直角坐标系。</p>
+
+<p>SVG里的Y轴是垂直向下的，这个与数学中的直角坐标系不同。</p>
+
+<p>所以SVG中的角度是顺时针开始的，而数学中的一般为逆时针。</p>
+
+<h1>四个坐标系</h1>
+
+<h2>用户坐标系（User Coordinate）</h2>
+
+<p>SVG世界的坐标系。上面所说的<code>viewbox</code>就是使用该坐标系。用户坐标系是最原始的，其他坐标系都是由其产生。</p>
+
+<h2>自身坐标系（Current Coordinate）</h2>
+
+<p>每个图形或图形分组自身的坐标系。</p>
+
+<h2>前驱坐标系（Previous Coordinate）</h2>
+
+<p>父容器的坐标系。</p>
+
+<p><img src="/media/images/svg-coordinate/c-c-p-c.jpg" alt="自身坐标系和前驱坐标系"></p>
+
+<h2>参考坐标系（Reference Coordinate）</h2>
+
+<p>使用其他坐标系来考究自身的情况使用。</p>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/solve-fullpage-problem/" class=""  >下一篇：解决fullpage.js在未初始化完成前样式显示问题</a></p>
+    <p><a  href="/svg-six-ele/" class=""  >上一篇：SVG六种基本图形元素以及DOM操作</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/svg-coordinate" data-url="http://liangbizhi.github.io/svg-coordinate/" data-title="SVG坐标系统和坐标变换" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
         </article>
         <footer>
         <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
-            <a href="http://github.com/{{ site.github }}/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
-            | © 2014 - {{site.time | date:"%Y"}} <a href="/about/">{{ site.author }}</a>
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
         </p>
         </footer>
     </div>

@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="keywords" content="前端,梁必志,liangbizhi,{{ site.name }},{{ page.title }}" />
-    <meta name="description" content="前端博客，博主脑袋有点异常。{{ page.title }}" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,解决fullpage.js在未初始化完成前样式显示问题" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。解决fullpage.js在未初始化完成前样式显示问题" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{% if page.path == 'index.html' %}{{ site.name }}{% else %}{% unless page.id %}{{ site.name }} - {% endunless %}{{ page.title }}{% endif %}</title>
+    <title>解决fullpage.js在未初始化完成前样式显示问题</title>
     <link rel="shortcut icon" href="/media/images/favicon.ico" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/iconfont.css" />
@@ -27,17 +27,17 @@
     <header id="header" class="">
         <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
         <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
-        <a class="header-right-picture" href="/about/" title="{{ site.author }}">
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
             <img class="header-picture" src="/media/images/avatar.png" alt="头像">
         </a>
     </header>
     <!--sidebar-->
     <nav id="sidebar">
         <div class="sidebar-profile">
-            <a href="/about/" title="{{ site.author }}">
+            <a href="/about/" title="liangbizhi">
                 <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
             </a>
-            <span class="sidebar-profile-name">{{ site.author }}</span>
+            <span class="sidebar-profile-name">liangbizhi</span>
         </div>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
@@ -87,7 +87,7 @@
         </ul>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
-                    <a class="sidebar-button-link " href="http://github.com/{{ site.github }}/" target="_blank">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
                         <i class="icon iconfont">&#xe605;</i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -117,15 +117,70 @@
     </nav>
     <div id="main" role="main">
         <header>
-            <h1>{{ page.title }}</h1>
+            <h1>解决fullpage.js在未初始化完成前样式显示问题</h1>
         </header>
         <article class="content">
-            {{ content }}
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-06-04">2015-06-04</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#javascript" title="javascript">javascript</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>起因</h1>
+
+<p>之前做的一个项目需要用到fullpage插件实现全屏轮播，而且是首页，显示效果要求较高。由于fullpage.js是在它加载完成时再操作DOM的，所以在这段时间里，首页的第一个<code>section</code>显示会显示不正常（如背景颜色，和里面的元素定位等等）。</p>
+
+<h1>解决</h1>
+
+<p>由于第一个<code>section</code>的元素是绝对定位，所以可以把<code>section</code>设成<code>overflow: hidden</code>，以隐藏里面的元素。然后为<code>section</code>添加默认的背景色，这样就不那么突兀了。</p>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a   class="pageNavInvalid"  >下一篇</a></p>
+    <p><a  href="/svg-coordinate/" class=""  >上一篇：SVG坐标系统和坐标变换</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/solve-fullpage-problem" data-url="http://liangbizhi.github.io/solve-fullpage-problem/" data-title="解决fullpage.js在未初始化完成前样式显示问题" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
         </article>
         <footer>
         <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
-            <a href="http://github.com/{{ site.github }}/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
-            | © 2014 - {{site.time | date:"%Y"}} <a href="/about/">{{ site.author }}</a>
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
         </p>
         </footer>
     </div>

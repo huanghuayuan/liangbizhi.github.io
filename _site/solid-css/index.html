@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,高质量的CSS" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。高质量的CSS" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>高质量的CSS</title>
+    <link rel="shortcut icon" href="/media/images/favicon.ico" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/iconfont.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <!--<link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml" />-->
+    <!--[if lt IE 9]>
+    <div class="bsie">
+        您的浏览器版本过旧，请升级为Google Chrome浏览器进行浏览 :-D
+        <a href="javascript:void(0);" onclick="this.parentNode.style.display='none';">关闭</a>
+    </div>
+    <![endif]-->
+</head>
+
+<body>
+   <!--header-->
+    <header id="header" class="">
+        <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
+        <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
+            <img class="header-picture" src="/media/images/avatar.png" alt="头像">
+        </a>
+    </header>
+    <!--sidebar-->
+    <nav id="sidebar">
+        <div class="sidebar-profile">
+            <a href="/about/" title="liangbizhi">
+                <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
+            </a>
+            <span class="sidebar-profile-name">liangbizhi</span>
+        </div>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/">
+                        <i class="icon iconfont">&#xe603;</i>
+                        <span class="sidebar-button-desc">主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/categories/">
+                        <i class="icon iconfont">&#xe601;</i>
+                        <span class="sidebar-button-desc">分&nbsp;&nbsp;&nbsp;&nbsp;类</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/tags/">
+                        <i class="icon iconfont">&#xe609;</i>
+                        <span class="sidebar-button-desc">标&nbsp;&nbsp;&nbsp;&nbsp;签</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/guestbook/">
+
+                        <i class="icon iconfont">&#xe606;</i>
+                        <span class="sidebar-button-desc">留&nbsp;&nbsp;&nbsp;&nbsp;言</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link st-search-show-outputs" href="/about/">
+
+                        <i class="icon iconfont">&#xe604;</i>
+                        <span class="sidebar-button-desc">关&nbsp;&nbsp;&nbsp;&nbsp;于</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link " href="javascript:void(0);">
+
+                        <i class="icon iconfont">&#xe607;</i>
+                        <span class="sidebar-button-desc">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
+                        <i class="icon iconfont">&#xe605;</i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="https://plus.google.com/107690026046415883872" target="_blank">
+                        <i class="icon iconfont">&#xe608;</i>
+                        <span class="sidebar-button-desc">Google Plus</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://weibo.com/bikuqixinzhi" target="_blank">
+                        <i class="icon iconfont">&#xe602;</i>
+                        <span class="sidebar-button-desc">Weibo</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="#">
+                        <i class="icon iconfont">&#xe600;</i>
+                        <span class="sidebar-button-desc">RSS订阅</span>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main" role="main">
+        <header>
+            <h1>高质量的CSS</h1>
+        </header>
+        <article class="content">
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-05-22">2015-05-22</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#css" title="css">css</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>怪异模式和DTD</h1>
+
+<p>如果漏写DTD声明，Firfox仍然会按照标准模式来解析网页，但在IE（包括6、7、8）就会触发怪异模式。</p>
+
+<p>例如对于盒子模型两者表现差别较大：</p>
+
+<p>标准：元素宽度 = padding + border + width</p>
+
+<p>怪异：width = padding + border</p>
+
+<p>为了避免触发怪异模式，请声明DTD。常见HTML DTD包括严格型、过渡型等类型。 </p>
+
+<h1>组织CSS</h1>
+
+<p>把网站所有样式按照职能分成三大类：base、common和page。</p>
+
+<h2>base层</h2>
+
+<p>提供CSS reset功能和粒度最小的通用类。这一层被所有页面引用，为最底层。改层相对稳定，基本不需要维护。</p>
+
+<h2>common层</h2>
+
+<p>提供组件级的CSS类。我们可以把页面大量重复的“模块”视为一个组件。尽可能多地将组件提取出来，放在common层里。该层就相当于MVC模式的M。不同的网站有不同的common层，common层是网站级的。在团队合作中，common层最好有一个人负责。</p>
+
+<h2>page层</h2>
+
+<p>非高度重用的模块，可以放在page层。该层位于最高层，提供页面级样式。</p>
+
+<p>可能会产生大量CSS文件，如果规模不大，可以将所有page层代码放在一个page.css文件里，根据页面配上注释，分块书写。这么做可能会带来些冗余，对于文件过于分散和集中的问题并没有完美的解决办法。</p>
+
+<p>有时把它们集中在一个文件中更便于维护，且便于浏览器缓存，浏览网站时只有首页的下载时间较长，浏览其他页面时反而较快。</p>
+
+<h1>挂多个class还是新建class</h1>
+
+<p>在面向对象编程中，有个重要的原则就是“多用组合，少用继承”。在使用CSS时，灵活这点可以减少类的数量。一方面，减少了代码量，提高了可维护性；另一方面，使类的职责更单一，弹性更强，增加了类的重用性，提高了开发效率。</p>
+
+<h1>低权重原则</h1>
+
+<p>为了保证样式容易被覆盖，提高可维护性，CSS选择符需保证权重尽可能低。</p>
+
+<h1>CSS Sprite</h1>
+
+<p>将网站的多张背景图合拼到一张大图片上。可以大大减少网页的HTTP请求数，减少服务器压力。但它也减低了可维护性，对于流量不大的网站，CSS Sprite好处并不明显。</p>
+
+<h1>CSS hack</h1>
+
+<h2>IE条件注释法</h2>
+
+<p>如果是IE浏览器，将引入一个CSS文件。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!--[if IE]&gt;
+&lt;link ... /&gt;
+&lt;![endif]--&gt;
+</code></pre></div>
+<p>分别是如果是IE6、高于IE6、只在IE7上不生效。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">&lt;!--[if IE 6]&gt;
+&lt;link ... /&gt;
+&lt;![endif]--&gt;
+
+&lt;!--[if gt IE 6]&gt;
+&lt;link ... /&gt;
+&lt;![endif]--&gt;
+
+&lt;!--[if ! IE 7]&gt;
+&lt;link ... /&gt;
+&lt;![endif]--&gt;
+</code></pre></div>
+<h2>选择符前缀法</h2>
+
+<p><code>*html</code>只对IE 6生效。</p>
+
+<p><code>*+html</code>只对IE 7生效。</p>
+
+<p>例如</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.test{}             /* IE 6, IE 7, IE 8 */
+*html .test{}       /* only for IE6 */
+*+html .test{}      /* only for IE 7 */
+</code></pre></div>
+<p>该方法不能用在内联样式上。</p>
+
+<h2>样式属性前缀法</h2>
+
+<p><code>_</code>只在IE 6下生效。</p>
+
+<p><code>*</code>在IE 6和IE 7下生效。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">.test{width: 80px; *width: 70px; _width: 60px;}
+</code></pre></div>
+<h1>居中</h1>
+
+<h2>水平居中</h2>
+
+<h3>文本、图片等行内元素的水平居中</h3>
+
+<p>父元素设置<code>text-align: center</code>。</p>
+
+<h3>宽度确定 块级 元素水平居中</h3>
+
+<p><code>margin-left: auto; margin-right: auto;</code></p>
+
+<h3>宽度不确定 块级 元素水平居中</h3>
+
+<ul>
+<li>方法一：设置块级元素<code>display: inline</code>，然后父元素使用<code>text-align: center</code>来实现居中。</li>
+<li>方法二：设置父元素<code>float: left; position: relative; left: 50%</code>，子元素<code>position: relative; left: -50%</code>实现水平居中。当然此方法并不能适用于所有情况，原理大概如此。</li>
+</ul>
+
+<h2>垂直居中</h2>
+
+<h3>父元素高度不确定的文本、图片、块级元素的竖直居中</h3>
+
+<p>父元素高度不确定，为内容撑开。通过给父容器设置相同上下边距实现。</p>
+
+<h3>父元素高度确定的单行文本的竖直居中</h3>
+
+<p>给父元素设置line-height值，该值和父元素高度相同即可，大家都知道。</p>
+
+<h3>父元素高度确定的多行文本、图片、块级元素的竖直居中</h3>
+
+<p>有一个用于竖直居中的属性<code>vertical-align</code>，但只有当父元素为<code>td</code>或<code>th</code>时才生效。对于块级元素默认是不支持的，为其设置<code>display: table-cell</code>即可（IE6、7不支持）。</p>
+
+<p>对于IE6、7可以直接使用表格，但带来了无意义标签。或者使用hack。</p>
+
+<h1>参考</h1>
+
+<p>[1] 曹刘阳 著；编写高质量代码：Web前端开发修炼之道 （Writing Solid Web Front-End Code）；机械工业出版社，2010</p>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/svg-six-ele/" class=""  >下一篇：SVG六种基本图形元素以及DOM操作</a></p>
+    <p><a  href="/solid-html/" class=""  >上一篇：高质量的HTML</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/solid-css" data-url="http://liangbizhi.github.io/solid-css/" data-title="高质量的CSS" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
+        </article>
+        <footer>
+        <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
+        </p>
+        </footer>
+    </div>
+</body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61782303-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="/media/js/script.js"></script>
+</html>

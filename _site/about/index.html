@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="keywords" content="前端,梁必志,liangbizhi,{{ site.name }},{{ page.title }}" />
-    <meta name="description" content="前端博客，博主脑袋有点异常。{{ page.title }}" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,关于" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。关于" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{% if page.path == 'index.html' %}{{ site.name }}{% else %}{% unless page.id %}{{ site.name }} - {% endunless %}{{ page.title }}{% endif %}</title>
+    <title>Bill Liang - 关于</title>
     <link rel="shortcut icon" href="/media/images/favicon.ico" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/iconfont.css" />
@@ -27,17 +27,17 @@
     <header id="header" class="">
         <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
         <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
-        <a class="header-right-picture" href="/about/" title="{{ site.author }}">
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
             <img class="header-picture" src="/media/images/avatar.png" alt="头像">
         </a>
     </header>
     <!--sidebar-->
     <nav id="sidebar">
         <div class="sidebar-profile">
-            <a href="/about/" title="{{ site.author }}">
+            <a href="/about/" title="liangbizhi">
                 <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
             </a>
-            <span class="sidebar-profile-name">{{ site.author }}</span>
+            <span class="sidebar-profile-name">liangbizhi</span>
         </div>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
@@ -87,7 +87,7 @@
         </ul>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
-                    <a class="sidebar-button-link " href="http://github.com/{{ site.github }}/" target="_blank">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
                         <i class="icon iconfont">&#xe605;</i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -117,15 +117,52 @@
     </nav>
     <div id="main" role="main">
         <header>
-            <h1>{{ page.title }}</h1>
+            <h1>关于</h1>
         </header>
         <article class="content">
-            {{ content }}
+            <section class="post">
+<p>这个博客开始于我的大三第一学期，虽然没什么人知晓，希望我能坚持下去。</p>
+
+<p>我只是个普通人。</p>
+
+<p>爱好：</p>
+
+<ul>
+<li>霓虹文化爱好者。</li>
+<li>哎呦，不错哦。</li>
+<li>Ingress Agent. Explore the world.</li>
+<li>Google fans.</li>
+</ul>
+
+<p>Update:</p>
+
+<ul>
+<li>2015-4-7 由于更新博客，导致之前的评论全部关联失败，十分抱歉。</li>
+</ul>
+
+<hr>
+
+<h3>联系方式：</h3>
+
+<p>网站：<a href="http://liangbizhi.github.io">Bill Liang</a></p>
+
+<p>邮箱：<a href="mailto:liangbizhi1993#gmail.com%EF%BC%88%E6%8A%8A#%E5%8F%B7%E6%8D%A2%E6%88%90@%EF%BC%89">liangbizhi1993#gmail.com（把#号换成@）</a></p>
+
+<p>GitHub : <a href="http://github.com/liangbizhi">http://github.com/liangbizhi</a></p>
+
+<hr>
+
+<p><a href="http://weibo.com/u/1037054042"><img src="http://service.t.sina.com.cn/widget/qmd/1037054042/f78fbcd2/1.png" alt="新浪微博"></a></p>
+
+</section>
+
+
+
         </article>
         <footer>
         <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
-            <a href="http://github.com/{{ site.github }}/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
-            | © 2014 - {{site.time | date:"%Y"}} <a href="/about/">{{ site.author }}</a>
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
         </p>
         </footer>
     </div>

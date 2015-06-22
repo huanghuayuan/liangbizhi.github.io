@@ -4,11 +4,11 @@
 <head>
     <meta http-equiv="content-type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="author" content="{{ site.author }}" />
-    <meta name="keywords" content="前端,梁必志,liangbizhi,{{ site.name }},{{ page.title }}" />
-    <meta name="description" content="前端博客，博主脑袋有点异常。{{ page.title }}" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,SVG六种基本图形元素以及DOM操作" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。SVG六种基本图形元素以及DOM操作" />
     <meta name="viewport" content="width=device-width,initial-scale=1" />
-    <title>{% if page.path == 'index.html' %}{{ site.name }}{% else %}{% unless page.id %}{{ site.name }} - {% endunless %}{{ page.title }}{% endif %}</title>
+    <title>SVG六种基本图形元素以及DOM操作</title>
     <link rel="shortcut icon" href="/media/images/favicon.ico" />
     <link rel="stylesheet" href="/media/css/style.css" />
     <link rel="stylesheet" href="/media/css/iconfont.css" />
@@ -27,17 +27,17 @@
     <header id="header" class="">
         <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
         <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
-        <a class="header-right-picture" href="/about/" title="{{ site.author }}">
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
             <img class="header-picture" src="/media/images/avatar.png" alt="头像">
         </a>
     </header>
     <!--sidebar-->
     <nav id="sidebar">
         <div class="sidebar-profile">
-            <a href="/about/" title="{{ site.author }}">
+            <a href="/about/" title="liangbizhi">
                 <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
             </a>
-            <span class="sidebar-profile-name">{{ site.author }}</span>
+            <span class="sidebar-profile-name">liangbizhi</span>
         </div>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
@@ -87,7 +87,7 @@
         </ul>
         <ul class="sidebar-buttons">
             <li class="sidebar-button">
-                    <a class="sidebar-button-link " href="http://github.com/{{ site.github }}/" target="_blank">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
                         <i class="icon iconfont">&#xe605;</i>
                         <span class="sidebar-button-desc">GitHub</span>
                     </a>
@@ -117,15 +117,116 @@
     </nav>
     <div id="main" role="main">
         <header>
-            <h1>{{ page.title }}</h1>
+            <h1>SVG六种基本图形元素以及DOM操作</h1>
         </header>
         <article class="content">
-            {{ content }}
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-05-27">2015-05-27</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#svg" title="svg">svg</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>&lt;rect&gt;</h1>
+
+<p>如果只给定<code>rx</code>或<code>ry</code>其中一个，那么另一个也会赋予相同的值。</p>
+
+<p><img src="/media/images/svg-six-ele/rect.jpg" alt="rect"></p>
+
+<h1>&lt;circle&gt;</h1>
+
+<p>这里的<code>cx</code>和<code>cy</code>是圆心的坐标（注意和<code>rect</code>区别）。</p>
+
+<p><img src="/media/images/svg-six-ele/circle.jpg" alt="circle"></p>
+
+<h1>&lt;ellipse&gt;</h1>
+
+<p><img src="/media/images/svg-six-ele/ellipse.jpg" alt="ellipse"></p>
+
+<h1>&lt;line&gt;</h1>
+
+<p><img src="/media/images/svg-six-ele/line.jpg" alt="line"></p>
+
+<h1>&lt;polyline&gt;</h1>
+
+<p>折线。</p>
+
+<p><img src="/media/images/svg-six-ele/polyline.jpg" alt="polyline"></p>
+
+<h1>&lt;polygon&gt;</h1>
+
+<p>多边形。也是描述了一个点集。他只不过将第一个点和第二个点连接起来形成一个闭合的多边形。</p>
+
+<p><img src="/media/images/svg-six-ele/polygon.jpg" alt="polygon"></p>
+
+<h1>属性：填充、描边和变换</h1>
+
+<p>属性是对图形样式的描述。</p>
+
+<p><img src="/media/images/svg-six-ele/attribute.jpg" alt="attribute"></p>
+
+<h1>DOM操作</h1>
+
+<h2>创建图形</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">document.createElementNS(ns, tagName);
+</code></pre></div>
+<p>这里和创建HTML标签不同，这里还要加上<code>NS</code>，这是因为<code>SVG</code>它有它的命名空间。tagName就是上述的标签了。</p>
+
+<h2>添加图形</h2>
+
+<p>和HTML的方法一样。</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">element.appendChild(childElement);
+</code></pre></div>
+<h2>设置/获取属性</h2>
+<div class="highlight"><pre><code class="language-text" data-lang="text">element.setAttribute(name, val);
+element.getAttribute(name);
+</code></pre></div>
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/svg-coordinate/" class=""  >下一篇：SVG坐标系统和坐标变换</a></p>
+    <p><a  href="/solid-css/" class=""  >上一篇：高质量的CSS</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/svg-six-ele" data-url="http://liangbizhi.github.io/svg-six-ele/" data-title="SVG六种基本图形元素以及DOM操作" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
         </article>
         <footer>
         <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
-            <a href="http://github.com/{{ site.github }}/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
-            | © 2014 - {{site.time | date:"%Y"}} <a href="/about/">{{ site.author }}</a>
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
         </p>
         </footer>
     </div>

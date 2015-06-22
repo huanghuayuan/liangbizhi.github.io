@@ -1,0 +1,749 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,HttpClient4.3.x第一章入门教程" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。HttpClient4.3.x第一章入门教程" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>HttpClient4.3.x第一章入门教程</title>
+    <link rel="shortcut icon" href="/media/images/favicon.ico" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/iconfont.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <!--<link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml" />-->
+    <!--[if lt IE 9]>
+    <div class="bsie">
+        您的浏览器版本过旧，请升级为Google Chrome浏览器进行浏览 :-D
+        <a href="javascript:void(0);" onclick="this.parentNode.style.display='none';">关闭</a>
+    </div>
+    <![endif]-->
+</head>
+
+<body>
+   <!--header-->
+    <header id="header" class="">
+        <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
+        <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
+            <img class="header-picture" src="/media/images/avatar.png" alt="头像">
+        </a>
+    </header>
+    <!--sidebar-->
+    <nav id="sidebar">
+        <div class="sidebar-profile">
+            <a href="/about/" title="liangbizhi">
+                <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
+            </a>
+            <span class="sidebar-profile-name">liangbizhi</span>
+        </div>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/">
+                        <i class="icon iconfont">&#xe603;</i>
+                        <span class="sidebar-button-desc">主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/categories/">
+                        <i class="icon iconfont">&#xe601;</i>
+                        <span class="sidebar-button-desc">分&nbsp;&nbsp;&nbsp;&nbsp;类</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/tags/">
+                        <i class="icon iconfont">&#xe609;</i>
+                        <span class="sidebar-button-desc">标&nbsp;&nbsp;&nbsp;&nbsp;签</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/guestbook/">
+
+                        <i class="icon iconfont">&#xe606;</i>
+                        <span class="sidebar-button-desc">留&nbsp;&nbsp;&nbsp;&nbsp;言</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link st-search-show-outputs" href="/about/">
+
+                        <i class="icon iconfont">&#xe604;</i>
+                        <span class="sidebar-button-desc">关&nbsp;&nbsp;&nbsp;&nbsp;于</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link " href="javascript:void(0);">
+
+                        <i class="icon iconfont">&#xe607;</i>
+                        <span class="sidebar-button-desc">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
+                        <i class="icon iconfont">&#xe605;</i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="https://plus.google.com/107690026046415883872" target="_blank">
+                        <i class="icon iconfont">&#xe608;</i>
+                        <span class="sidebar-button-desc">Google Plus</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://weibo.com/bikuqixinzhi" target="_blank">
+                        <i class="icon iconfont">&#xe602;</i>
+                        <span class="sidebar-button-desc">Weibo</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="#">
+                        <i class="icon iconfont">&#xe600;</i>
+                        <span class="sidebar-button-desc">RSS订阅</span>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main" role="main">
+        <header>
+            <h1>HttpClient4.3.x第一章入门教程</h1>
+        </header>
+        <article class="content">
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-01-22">2015-01-22</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#java" title="java">java</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#HTTP" title="HTTP">HTTP</a>&nbsp;
+  
+  <a href="/tags/#翻译" title="翻译">翻译</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<p>最近想写一个网络爬虫，要用到apache的httpclient项目（HttpClient4.3.x），在官网学习该项目一些基础内容，顺便翻译<a href="http://hc.apache.org/httpcomponents-client-4.3.x/tutorial/html/fundamentals.html" title="跳转">官方文档</a>。</p>
+
+<h1>第一章 基础</h1>
+
+<h2>1.1. 请求处理</h2>
+
+<p>HttpClient最重要的功能是处理HTTP方法。一个HTTP方法涉及一个或几个HTTP请求或HTTP响应的交换，通常被HttpClient内部处理。用户提供一个请求对象，HttpClient将它传送给目标服务器并返回一个对应的响应对象，如果处理过程失败，则抛出异常。</p>
+
+<p>通常，HttpClient API的主要入口是HttpClient接口，它定义了上面的协议。</p>
+
+<p>这里是一个请求处理过程例子：</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno">2</span>     <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/&quot;</span><span class="o">);</span>
+<span class="lineno">3</span>     <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">);</span>
+<span class="lineno">4</span>     <span class="k">try</span> <span class="o">{</span>
+<span class="lineno">5</span>         <span class="o">&lt;...&gt;</span>
+<span class="lineno">6</span>     <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">7</span>         <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">8</span>     <span class="o">}</span></code></pre></div>
+
+<h3>1.1.1. HTTP请求</h3>
+
+<p>所有的HTTP请求都有一个请求行（request line），包括一个方法名，一个请求URI和一个HTTP协议版本号。</p>
+
+<p>HttpClient支持所有<code>HTTP/1.1</code>定义的方法，包括：<code>GET</code>，<code>HEAD</code>，<code>POST</code>，<code>PUT</code>，<code>DELETE</code>，<code>TRACE</code> 和 <code>OPTION</code>。每一个方法都对应了一个指定的类：<code>HttpGet</code>，<code>HttpPost</code>，<code>HttpHead</code>，<code>HttpPost</code>，<code>HttpPut</code>，<code>HttpDelete</code>，<code>HttpTrace</code>和<code>HttpOption</code>。</p>
+
+<p>请求URI是一个统一资源标记符，标记了请求的资源。HTTP请求<code>URIs</code>包含了请求协议，主机名，端号（可选），资源路径，查询字符串（可选）和片信息（可选）。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://www.google.com/search?hl=en&amp;q=httpclient&amp;btnG=Google+Search&amp;aq=f&amp;oq=&quot;</span><span class="o">);</span></code></pre></div>
+
+<p>HttpClient提供了<code>URIBuilder</code>工具类来简化请求<code>URIs</code>的创建和修改。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">URI</span> <span class="n">uri</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">URIBuilder</span><span class="o">()</span>
+<span class="lineno"> 2</span>         <span class="o">.</span><span class="na">setScheme</span><span class="o">(</span><span class="s">&quot;http&quot;</span><span class="o">)</span>
+<span class="lineno"> 3</span>         <span class="o">.</span><span class="na">setHost</span><span class="o">(</span><span class="s">&quot;www.google.com&quot;</span><span class="o">)</span>
+<span class="lineno"> 4</span>         <span class="o">.</span><span class="na">setPath</span><span class="o">(</span><span class="s">&quot;/search&quot;</span><span class="o">)</span>
+<span class="lineno"> 5</span>         <span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;q&quot;</span><span class="o">,</span> <span class="s">&quot;httpclient&quot;</span><span class="o">)</span>
+<span class="lineno"> 6</span>         <span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;btnG&quot;</span><span class="o">,</span> <span class="s">&quot;Google Search&quot;</span><span class="o">)</span>
+<span class="lineno"> 7</span>         <span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;aq&quot;</span><span class="o">,</span> <span class="s">&quot;f&quot;</span><span class="o">)</span>
+<span class="lineno"> 8</span>         <span class="o">.</span><span class="na">setParameter</span><span class="o">(</span><span class="s">&quot;oq&quot;</span><span class="o">,</span> <span class="s">&quot;&quot;</span><span class="o">)</span>
+<span class="lineno"> 9</span>         <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="lineno">10</span>     <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="n">uri</span><span class="o">);</span>
+<span class="lineno">11</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">httpget</span><span class="o">.</span><span class="na">getURI</span><span class="o">());</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">http://www.google.com/search?q=httpclient&amp;btnG=Google+Search&amp;aq=f&amp;oq=
+</code></pre></div>
+<h3>1.1.2. HTTP响应</h3>
+
+<p>HTTP响应是服务器接收并解析请求消息后返回给客户端的消息。该消息的第一行包含了协议版本（后面紧跟着一个数字状态码）和关联的文本短语。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BasicHttpResponse</span><span class="o">(</span><span class="n">HttpVersion</span><span class="o">.</span><span class="na">HTTP_1_1</span><span class="o">,</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">SC_OK</span><span class="o">,</span> <span class="s">&quot;OK&quot;</span><span class="o">);</span>
+<span class="lineno">2</span> 
+<span class="lineno">3</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getProtocolVersion</span><span class="o">());</span>
+<span class="lineno">4</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusLine</span><span class="o">().</span><span class="na">getStatusCode</span><span class="o">());</span>
+<span class="lineno">5</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusLine</span><span class="o">().</span><span class="na">getReasonPhrase</span><span class="o">());</span>
+<span class="lineno">6</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">getStatusLine</span><span class="o">().</span><span class="na">toString</span><span class="o">());</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">HTTP/1.1
+200
+OK
+HTTP/1.1 200 OK
+</code></pre></div>
+<h3>1.1.3. 消息头</h3>
+
+<p>一个HTTP消息可以包含许多消息头，它们用来描述消息的属性，比如消息的内容，类型等。HttpClient提供方法来获取、增加、移除和枚举消息头。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BasicHttpResponse</span><span class="o">(</span><span class="n">HttpVersion</span><span class="o">.</span><span class="na">HTTP_1_1</span><span class="o">,</span><span class="n">HttpStatus</span><span class="o">.</span><span class="na">SC_OK</span><span class="o">,</span> <span class="s">&quot;OK&quot;</span><span class="o">);</span>
+<span class="lineno"> 2</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c1=a; path=/; domain=localhost&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c2=b; path=\&quot;/\&quot;, c3=c; domain=\&quot;localhost\&quot;&quot;</span><span class="o">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="n">Header</span> <span class="n">h1</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getFirstHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">);</span>  <span class="c1">//第一个消息头</span>
+<span class="lineno"> 6</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h1</span><span class="o">);</span>
+<span class="lineno"> 7</span>     <span class="n">Header</span> <span class="n">h2</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getLastHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">);</span>
+<span class="lineno"> 8</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">h2</span><span class="o">);</span>
+<span class="lineno"> 9</span>     <span class="n">Header</span><span class="o">[]</span> <span class="n">hs</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getHeaders</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">);</span>
+<span class="lineno">10</span>     <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">hs</span><span class="o">.</span><span class="na">length</span><span class="o">);</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Set-Cookie: c1=a; path=/; domain=localhost
+Set-Cookie: c2=b; path=&quot;/&quot;, c3=c; domain=&quot;localhost&quot;
+2
+</code></pre></div>
+<p>获取所有的消息头最有效的方法是使用<code>HeaderIterator</code>接口。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BasicHttpResponse</span><span class="o">(</span><span class="n">HttpVersion</span><span class="o">.</span><span class="na">HTTP_1_1</span><span class="o">,</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">SC_OK</span><span class="o">,</span> <span class="s">&quot;OK&quot;</span><span class="o">);</span>
+<span class="lineno">2</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c1=a; path=/; domain=localhost&quot;</span><span class="o">);</span>
+<span class="lineno">3</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c2=b; path=\&quot;/\&quot;, c3=c; domain=\&quot;localhost\&quot;&quot;</span><span class="o">);</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span>     <span class="n">HeaderIterator</span> <span class="n">it</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">headerIterator</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">);</span>
+<span class="lineno">6</span> 
+<span class="lineno">7</span>     <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+<span class="lineno">8</span>         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">next</span><span class="o">());</span>
+<span class="lineno">9</span>     <span class="o">}</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Set-Cookie: c1=a; path=/; domain=localhost
+Set-Cookie: c2=b; path=&quot;/&quot;, c3=c; domain=&quot;localhost&quot;
+</code></pre></div>
+<p>它同时提供了方便的方法，把HTTP消息解析成独立的消息头元素。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BasicHttpResponse</span><span class="o">(</span><span class="n">HttpVersion</span><span class="o">.</span><span class="na">HTTP_1_1</span><span class="o">,</span> <span class="n">HttpStatus</span><span class="o">.</span><span class="na">SC_OK</span><span class="o">,</span> <span class="s">&quot;OK&quot;</span><span class="o">);</span>
+<span class="lineno"> 2</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c1=a; path=/; domain=localhost&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span>     <span class="n">response</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">,</span> <span class="s">&quot;c2=b; path=\&quot;/\&quot;, c3=c; domain=\&quot;localhost\&quot;&quot;</span><span class="o">);</span>
+<span class="lineno"> 4</span> 
+<span class="lineno"> 5</span>     <span class="n">HeaderElementIterator</span> <span class="n">it</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BasicHeaderElementIterator</span><span class="o">(</span><span class="n">response</span><span class="o">.</span><span class="na">headerIterator</span><span class="o">(</span><span class="s">&quot;Set-Cookie&quot;</span><span class="o">));</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>     <span class="k">while</span> <span class="o">(</span><span class="n">it</span><span class="o">.</span><span class="na">hasNext</span><span class="o">())</span> <span class="o">{</span>
+<span class="lineno"> 8</span>         <span class="n">HeaderElement</span> <span class="n">elem</span> <span class="o">=</span> <span class="n">it</span><span class="o">.</span><span class="na">nextElement</span><span class="o">();</span>
+<span class="lineno"> 9</span>         <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">elem</span><span class="o">.</span><span class="na">getName</span><span class="o">()</span> <span class="o">+</span> <span class="s">&quot; = &quot;</span> <span class="o">+</span> <span class="n">elem</span><span class="o">.</span><span class="na">getValue</span><span class="o">());</span>
+<span class="lineno">10</span>         <span class="n">NameValuePair</span><span class="o">[]</span> <span class="n">params</span> <span class="o">=</span> <span class="n">elem</span><span class="o">.</span><span class="na">getParameters</span><span class="o">();</span>
+<span class="lineno">11</span>         <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="n">params</span><span class="o">.</span><span class="na">length</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="lineno">12</span>             <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot; &quot;</span> <span class="o">+</span> <span class="n">params</span><span class="o">[</span><span class="n">i</span><span class="o">]);</span>
+<span class="lineno">13</span>         <span class="o">}</span>
+<span class="lineno">14</span>     <span class="o">}</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">c1 = a
+path=/
+domain=localhost
+c2 = b
+path=/
+c3 = c
+domain=localhost
+</code></pre></div>
+<h3>1.1.4. HTTP实体</h3>
+
+<p>HTTP消息可以携带与请求或响应相关的内容实体。实体可以出现在某些请求和某些响应中，但不是必须的。使用了实体的请求被称为“实体封装请求(entity enclosing requests)”。HTTP协议定义了两个实体封装请求方法：<code>POST</code>和<code>PUT</code>。响应一般封装了内容实体。这个规则也存在异常，比如对<code>HEAD</code>方法的响应，和<code>204 No Content</code>，<code>304 Not Modified</code>，<code>205 Reset Content</code>响应。</p>
+
+<p>根据它们的内容来源，HttpClient区分三种实体：</p>
+
+<ul>
+<li><p><strong>streamed（流）:</strong> 内容通过流接收，或者实时生成（generated on the fly）。特别地，streamed包含了从HTTP响应接收到的实体。streamed实体一般是不可重复的。</p></li>
+<li><p><strong>self-contained（独立的）:</strong> 内容可能在内存中，或者通过与某一连接或其他实体独立的方式获得。self-contained实体一般是可重复的。这种类型的实体常常用来封装HTTP请求。</p></li>
+<li><p><strong>wrapping（封装）:</strong> 其内容从其他实体中获取。</p></li>
+</ul>
+
+<p>当从HTTP响应读取内容时，为了连接管理，上面这些区分是很重要的。对于那些由一个应用程序创建的，并仅仅使用HttpClient发送的实体，streamed类实体和self-contained类实体之间的区别并不重要。这种情况下，streamed被认为是不可重复的，self-contained则是可重复的。</p>
+
+<h4>1.1.4.1. 可重复实体</h4>
+
+<p>实体可重复，意味着它的内容可以被读多次。这仅仅对于self-contained实体可行（比如<code>ByteArrayEntity</code> 或者 <code>StringEntity</code>）。</p>
+
+<h4>1.1.4.2. 使用HTTP实体</h4>
+
+<p>因为一个实体可同时代表二进制和文本内容，所以它支持文本编码（支持字母内容等）。</p>
+
+<p>当处理一个封装内容的请求或当请求成功并有响应返回客户端时，实体就被创建。</p>
+
+<p>为了读取实体中的内容，要么通过<code>HttpEntity#getContent()</code>方法获得输入流，该方法返回的是<code>java.io.InputStream</code>对象；要么给<code>HttpEntity#writeTo(OutputStream)</code>方法提供一个输出流对象，当所有的内容都被写到给定的输出流时，这个方法会马上返回。</p>
+
+<p>当实体随传入的消息被接收时，可以用<code>HttpEntity#getContentType()</code>和<code>HttpEntity#getContentLength()</code>方法来读取通用元数据，比如<code>Content-Type</code>和<code>Content-Length</code>头信息（如果它们可用的话）。因为<code>Content-Type</code>头可以包含一个文本<code>MIME</code>类型比如<code>text/plain</code>或<code>text/html</code>的字符编码，所以可以用<code>HttpEntity#getContentEncoding()</code>方法来获取这个编码信息。如果这些头消息不可用，会返回长度-1，或返回<code>NULL</code>（对于<code>Content-type</code>）。如果<code>Content-Type</code>头可用，则返回一个<code>Header</code>对象。</p>
+
+<p>当为发送消息创建一个实体时，实体创建器必须提供这些元数据。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">StringEntity</span> <span class="n">myEntity</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringEntity</span><span class="o">(</span><span class="s">&quot;important message&quot;</span><span class="o">,</span>
+<span class="lineno">2</span>      <span class="n">ContentType</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;text/plain&quot;</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">));</span>
+<span class="lineno">3</span> 
+<span class="lineno">4</span>   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myEntity</span><span class="o">.</span><span class="na">getContentType</span><span class="o">());</span>
+<span class="lineno">5</span>   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">myEntity</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">());</span>
+<span class="lineno">6</span>   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">EntityUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">myEntity</span><span class="o">));</span>
+<span class="lineno">7</span>   <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">EntityUtils</span><span class="o">.</span><span class="na">toByteArray</span><span class="o">(</span><span class="n">myEntity</span><span class="o">).</span><span class="na">length</span><span class="o">);</span></code></pre></div>
+
+<p>标准输出：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">Content-Type: text/plain; charset=utf-8
+17
+important message
+17
+</code></pre></div>
+<h3>1.1.5. 保证低级资源的释放</h3>
+
+<p>为了保证系统资源的适当释放，我们必须关闭与实体相关的内容流，或者关闭响应本身。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">);</span>
+<span class="lineno"> 4</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno"> 5</span>      <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno"> 6</span>      <span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7</span>          <span class="n">InputStream</span> <span class="n">instream</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContent</span><span class="o">();</span>
+<span class="lineno"> 8</span>          <span class="k">try</span> <span class="o">{</span>
+<span class="lineno"> 9</span>              <span class="c1">// do something useful</span>
+<span class="lineno">10</span>          <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">11</span>              <span class="n">instream</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">12</span>          <span class="o">}</span>
+<span class="lineno">13</span>      <span class="o">}</span>
+<span class="lineno">14</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">15</span>      <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">16</span>  <span class="o">}</span></code></pre></div>
+
+<p>关闭内容流和关闭响应，它们的区别就是前者会试图通过消耗实体内容来保持底层的连接，而后者会马上关闭并且断开连接。</p>
+
+<p>请注意，一旦实体被完全写出，<code>HttpEntity#writeTo(OutputStream)</code>方法也要保证释放系统资源。如果调用<code>HttpEntity#getContent()</code>获得一个<code>java.io.InputStream</code>流对象，也最好在<code>finally</code>语句中关闭掉这个流。</p>
+
+<p>当使用流实体时，可以使用<code>EntityUtils#consume(HttpEntity)</code>方法来保证实体内容已被完全消耗完和底层流已被关闭掉。</p>
+
+<p>然而有些情况，当只想接受响应内容的一小部分时，在处理剩下的内容时会造成性能损失，并使得连接重用太高，此时我们可以关闭响应来终止内容流。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">);</span>
+<span class="lineno"> 4</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno"> 5</span>      <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno"> 6</span>      <span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7</span>          <span class="n">InputStream</span> <span class="n">instream</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContent</span><span class="o">();</span>
+<span class="lineno"> 8</span>          <span class="kt">int</span> <span class="n">byteOne</span> <span class="o">=</span> <span class="n">instream</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
+<span class="lineno"> 9</span>          <span class="kt">int</span> <span class="n">byteTwo</span> <span class="o">=</span> <span class="n">instream</span><span class="o">.</span><span class="na">read</span><span class="o">();</span>
+<span class="lineno">10</span>          <span class="c1">// Do not need the rest</span>
+<span class="lineno">11</span>      <span class="o">}</span>
+<span class="lineno">12</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">13</span>      <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">14</span>  <span class="o">}</span></code></pre></div>
+
+<p>这个连接不会被重用，但是它持有的所有级别的资源都会被正确地释放掉。</p>
+
+<h3>1.1.6. 消耗实体内容</h3>
+
+<p>推荐使用实体的<code>HttpEntity#getContent()</code>或<code>HttpEntity#writeTo(OutputStream)</code>方法来消耗它的内容。HttpClient也提供了EntityUtils 类，它提供了几个静态方法以更简单地读取实体的内容或信息。除了直接读取<code>java.io.InputStream</code>外，我们可以使用这个类的方法，以字符串或字节数组的方式获取实体的全部内容。而然，强烈地不鼓励使用<code>EntityUtils</code>，除非响应实体来源于可信任的HTTP服务器并且是有限长度的。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">);</span>
+<span class="lineno"> 4</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno"> 5</span>      <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno"> 6</span>      <span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7</span>          <span class="kt">long</span> <span class="n">len</span> <span class="o">=</span> <span class="n">entity</span><span class="o">.</span><span class="na">getContentLength</span><span class="o">();</span>
+<span class="lineno"> 8</span>          <span class="k">if</span> <span class="o">(</span><span class="n">len</span> <span class="o">!=</span> <span class="o">-</span><span class="mi">1</span> <span class="o">&amp;&amp;</span> <span class="n">len</span> <span class="o">&lt;</span> <span class="mi">2048</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 9</span>              <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="n">EntityUtils</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">entity</span><span class="o">));</span>
+<span class="lineno">10</span>          <span class="o">}</span> <span class="k">else</span> <span class="o">{</span>
+<span class="lineno">11</span>              <span class="c1">// Stream content out</span>
+<span class="lineno">12</span>          <span class="o">}</span>
+<span class="lineno">13</span>      <span class="o">}</span>
+<span class="lineno">14</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">15</span>      <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">16</span>  <span class="o">}</span></code></pre></div>
+
+<p>在某些情况下，需要能多次读取实体内容。此时实体内容必须经过某些方式缓存起来，要么在内存中，要么在磁盘上。最简单的实现方法是使用<code>BufferedHttpEntity</code>类来封装原实体。这将会使得原实体内容被读入内存缓冲区中。后面我们将可以重复读取封装器里面的内容。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="o">&lt;...&gt;</span>
+<span class="lineno">2</span>   <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno">3</span>   <span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">!=</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">4</span>       <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">BufferedHttpEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+<span class="lineno">5</span>   <span class="o">}</span></code></pre></div>
+
+<h3>1.1.7. 创建实体内容</h3>
+
+<p>HttpClient提供了几个类，通过HTTP连接使用它们可以高效地输出实体内容。这些类的实例被实体封装请求（如<code>POST</code>和<code>PUT</code>）关联起来。HttpClient为大多数的通用数据容器（如字符串，字节数组，输入流和文件）提供了几个类：<code>StringEntity</code>，<code>ByteArrayEntity</code>，<code>InputStreamEntity</code>和<code>FileEntity</code>。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">File</span> <span class="n">file</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">File</span><span class="o">(</span><span class="s">&quot;somefile.txt&quot;</span><span class="o">);</span>
+<span class="lineno">2</span>   <span class="n">FileEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">FileEntity</span><span class="o">(</span><span class="n">file</span><span class="o">,</span>
+<span class="lineno">3</span>       <span class="n">ContentType</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;text/plain&quot;</span><span class="o">,</span> <span class="s">&quot;UTF-8&quot;</span><span class="o">));</span>
+<span class="lineno">4</span> 
+<span class="lineno">5</span>   <span class="n">HttpPost</span> <span class="n">httppost</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpPost</span><span class="o">(</span><span class="s">&quot;http://localhost/action.do&quot;</span><span class="o">);</span>
+<span class="lineno">6</span>   <span class="n">httppost</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span></code></pre></div>
+
+<p>请注意，<code>InputStreamEntity</code>是不可重复的，因为它仅可以从底层数据流读取一次。通常推荐实现一个自定义的、独立的<code>HttpEntity</code>类，而不是使用一般的<code>InputStreamEntity</code>。<code>FileEntity</code>可以是一个很好的起点。</p>
+
+<h4>1.1.7.1. HTML表单</h4>
+
+<p>许多应用需要模拟提交HTML表单的过程，例如，为了登陆一个web应用或者提交输入的数据。HttpClient提供了实体类<code>UrlEncodedFormEntity</code>以方便处理该过程。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">List</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;</span> <span class="n">formparams</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ArrayList</span><span class="o">&lt;</span><span class="n">NameValuePair</span><span class="o">&gt;();</span>
+<span class="lineno">2</span>   <span class="n">formparams</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">BasicNameValuePair</span><span class="o">(</span><span class="s">&quot;param1&quot;</span><span class="o">,</span> <span class="s">&quot;value1&quot;</span><span class="o">));</span>
+<span class="lineno">3</span>   <span class="n">formparams</span><span class="o">.</span><span class="na">add</span><span class="o">(</span><span class="k">new</span> <span class="nf">BasicNameValuePair</span><span class="o">(</span><span class="s">&quot;param2&quot;</span><span class="o">,</span> <span class="s">&quot;value2&quot;</span><span class="o">));</span>
+<span class="lineno">4</span>   <span class="n">UrlEncodedFormEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">UrlEncodedFormEntity</span><span class="o">(</span><span class="n">formparams</span><span class="o">,</span> <span class="n">Consts</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">);</span>
+<span class="lineno">5</span>   <span class="n">HttpPost</span> <span class="n">httppost</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpPost</span><span class="o">(</span><span class="s">&quot;http://localhost/handler.do&quot;</span><span class="o">);</span>
+<span class="lineno">6</span>   <span class="n">httppost</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span></code></pre></div>
+
+<p><code>UrlEncodedFormEntity</code>实例将会使用URL encoding来编码参数，产生以下内容：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">param1=value1&amp;param2=value2
+</code></pre></div>
+<h4>1.1.7.2. 内容分块</h4>
+
+<p>基于传送的HTTP消息属性，通常推荐由HttpClient来选择最合适的传送编码。然而，有时候通过设置<code>HttpEntity#setChunked()</code>为<code>true</code>，通知HttpClient使用块编码更好。请注意HttpClient将仅仅使用此标记作为一个暗示。当使用的HTTP协议版本不支持块编码时，例如HTTP/1.0，那么这个值就会被忽略。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">StringEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">StringEntity</span><span class="o">(</span><span class="s">&quot;important message&quot;</span><span class="o">,</span>
+<span class="lineno">2</span>           <span class="n">ContentType</span><span class="o">.</span><span class="na">create</span><span class="o">(</span><span class="s">&quot;plain/text&quot;</span><span class="o">,</span> <span class="n">Consts</span><span class="o">.</span><span class="na">UTF_8</span><span class="o">));</span>
+<span class="lineno">3</span>   <span class="n">entity</span><span class="o">.</span><span class="na">setChunked</span><span class="o">(</span><span class="kc">true</span><span class="o">);</span>
+<span class="lineno">4</span>   <span class="n">HttpPost</span> <span class="n">httppost</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpPost</span><span class="o">(</span><span class="s">&quot;http://localhost/acrtion.do&quot;</span><span class="o">);</span>
+<span class="lineno">5</span>   <span class="n">httppost</span><span class="o">.</span><span class="na">setEntity</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span></code></pre></div>
+
+<h3>1.1.8. 响应处理程序</h3>
+
+<p>使用<code>ResponseHandler</code>接口是处理响应最简单、最方便的方式，该接口包含了<code>handleResponse(HttpResponse response)</code>方法。这个方法使得用户完全不用关心底层连接管理。使用<code>ResponseHandler</code>时，无论请求处理成功或出现异常，HttpClient都将会自动保证连接的释放。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/json&quot;</span><span class="o">);</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>  <span class="n">ResponseHandler</span><span class="o">&lt;</span><span class="n">MyJsonObject</span><span class="o">&gt;</span> <span class="n">rh</span> <span class="o">=</span> <span class="k">new</span> <span class="n">ResponseHandler</span><span class="o">&lt;</span><span class="n">MyJsonObject</span><span class="o">&gt;()</span> <span class="o">{</span>
+<span class="lineno"> 5</span> 
+<span class="lineno"> 6</span>      <span class="nd">@Override</span>
+<span class="lineno"> 7</span>      <span class="kd">public</span> <span class="n">JsonObject</span> <span class="nf">handleResponse</span><span class="o">(</span>
+<span class="lineno"> 8</span>              <span class="kd">final</span> <span class="n">HttpResponse</span> <span class="n">response</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">IOException</span> <span class="o">{</span>
+<span class="lineno"> 9</span>          <span class="n">StatusLine</span> <span class="n">statusLine</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getStatusLine</span><span class="o">();</span>
+<span class="lineno">10</span>          <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno">11</span>          <span class="k">if</span> <span class="o">(</span><span class="n">statusLine</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">()</span> <span class="o">&gt;=</span> <span class="mi">300</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">12</span>              <span class="k">throw</span> <span class="k">new</span> <span class="nf">HttpResponseException</span><span class="o">(</span>
+<span class="lineno">13</span>                      <span class="n">statusLine</span><span class="o">.</span><span class="na">getStatusCode</span><span class="o">(),</span>
+<span class="lineno">14</span>                      <span class="n">statusLine</span><span class="o">.</span><span class="na">getReasonPhrase</span><span class="o">());</span>
+<span class="lineno">15</span>          <span class="o">}</span>
+<span class="lineno">16</span>          <span class="k">if</span> <span class="o">(</span><span class="n">entity</span> <span class="o">==</span> <span class="kc">null</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">17</span>              <span class="k">throw</span> <span class="k">new</span> <span class="nf">ClientProtocolException</span><span class="o">(</span><span class="s">&quot;Response contains no content&quot;</span><span class="o">);</span>
+<span class="lineno">18</span>          <span class="o">}</span>
+<span class="lineno">19</span>          <span class="n">Gson</span> <span class="n">gson</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">GsonBuilder</span><span class="o">().</span><span class="na">create</span><span class="o">();</span>
+<span class="lineno">20</span>          <span class="n">ContentType</span> <span class="n">contentType</span> <span class="o">=</span> <span class="n">ContentType</span><span class="o">.</span><span class="na">getOrDefault</span><span class="o">(</span><span class="n">entity</span><span class="o">);</span>
+<span class="lineno">21</span>          <span class="n">Charset</span> <span class="n">charset</span> <span class="o">=</span> <span class="n">contentType</span><span class="o">.</span><span class="na">getCharset</span><span class="o">();</span>
+<span class="lineno">22</span>          <span class="n">Reader</span> <span class="n">reader</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">InputStreamReader</span><span class="o">(</span><span class="n">entity</span><span class="o">.</span><span class="na">getContent</span><span class="o">(),</span> <span class="n">charset</span><span class="o">);</span>
+<span class="lineno">23</span>          <span class="k">return</span> <span class="n">gson</span><span class="o">.</span><span class="na">fromJson</span><span class="o">(</span><span class="n">reader</span><span class="o">,</span> <span class="n">MyJsonObject</span><span class="o">.</span><span class="na">class</span><span class="o">);</span>
+<span class="lineno">24</span>      <span class="o">}</span>
+<span class="lineno">25</span>  <span class="o">};</span>
+<span class="lineno">26</span>  <span class="n">MyJsonObject</span> <span class="n">myjson</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">,</span> <span class="n">rh</span><span class="o">);</span></code></pre></div>
+
+<h2>1.2. HttpClient接口</h2>
+
+<p>HttpClient接口代表了大部分重要的HTTP请求处理规则。它规定了不受限制的或具体细节的请求处理过程，而且隐藏了连接管理，状态管理，授权和重定向处理个人实现等的细节。这使得更容易使用额外的功能，例如响应内容缓存，来修饰接口。对于一些专用处理程序或负责处理HTTP协议某具体方面（如重定向、授权管理或决定连接持续时间）的策略接口实现，HttpClient实现一般情况下都充当着一个幌子（facade）。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">ConnectionKeepAliveStrategy</span> <span class="n">keepAliveStrat</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">DefaultConnectionKeepAliveStrategy</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span>      <span class="nd">@Override</span>
+<span class="lineno"> 4</span>      <span class="kd">public</span> <span class="kt">long</span> <span class="nf">getKeepAliveDuration</span><span class="o">(</span>
+<span class="lineno"> 5</span>              <span class="n">HttpResponse</span> <span class="n">response</span><span class="o">,</span>
+<span class="lineno"> 6</span>              <span class="n">HttpContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7</span>          <span class="kt">long</span> <span class="n">keepAlive</span> <span class="o">=</span> <span class="kd">super</span><span class="o">.</span><span class="na">getKeepAliveDuration</span><span class="o">(</span><span class="n">response</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span>
+<span class="lineno"> 8</span>          <span class="k">if</span> <span class="o">(</span><span class="n">keepAlive</span> <span class="o">==</span> <span class="o">-</span><span class="mi">1</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 9</span>              <span class="c1">// Keep connections alive 5 seconds if a keep-alive value</span>
+<span class="lineno">10</span>              <span class="c1">// has not be explicitly set by the server</span>
+<span class="lineno">11</span>              <span class="n">keepAlive</span> <span class="o">=</span> <span class="mi">5000</span><span class="o">;</span>
+<span class="lineno">12</span>          <span class="o">}</span>
+<span class="lineno">13</span>          <span class="k">return</span> <span class="n">keepAlive</span><span class="o">;</span>
+<span class="lineno">14</span>      <span class="o">}</span>
+<span class="lineno">15</span> 
+<span class="lineno">16</span>  <span class="o">};</span>
+<span class="lineno">17</span>  <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">()</span>
+<span class="lineno">18</span>          <span class="o">.</span><span class="na">setKeepAliveStrategy</span><span class="o">(</span><span class="n">keepAliveStrat</span><span class="o">)</span>
+<span class="lineno">19</span>          <span class="o">.</span><span class="na">build</span><span class="o">();</span></code></pre></div>
+
+<h3>1.2.1. HttpClient线程安全</h3>
+
+<p>HttpClient实现是线程安全的。推荐使用这个类的同一实例来处理请求。</p>
+
+<h3>1.2.2. HttpClient资源分配</h3>
+
+<p>当一个<code>CloseableHttpClient</code>实例不再需要并将要超出与之关联的连接管理程序范围时，必须通过<code>CloseableHttpClient#close()</code>方法关闭它。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno">2</span>   <span class="k">try</span> <span class="o">{</span>
+<span class="lineno">3</span>       <span class="o">&lt;...&gt;</span>
+<span class="lineno">4</span>   <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">5</span>       <span class="n">httpclient</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">6</span>   <span class="o">}</span></code></pre></div>
+
+<h2>1.3. HTTP执行上下文</h2>
+
+<p>起初，HTTP被设计为一个无状态，面向响应-请求的协议。然而，现实情况下，应用程序经常需要能在几次逻辑相关的请求-响应交换中保持状态信息。为了使应用程序能维持一个处理状态，HttpClient允许HTTP请求在一个具体的执行上下文中执行，简称HTTP上下文。如果同样的上下文在持续的请求之间重复使用，多个逻辑相关的请求就可以参与同一个逻辑会话。HTTP上下文函数和<code>java.util.Map&lt;String, Object&gt;</code>相似。这是一个简单的任意指定值的集合。一个应用程序可以在请求执行或执行完成之后检查上下文之前填充上下文属性。</p>
+
+<p>由于<code>HttpContext</code>可以包含任意的对象，所以在多个线程之间共享上下文可能不安全。推荐每个执行线程都维护自己的上下文。</p>
+
+<p>在HTTP请求执行过程中，HttpClient添加一下属性到执行上下文中：</p>
+
+<ul>
+<li><code>HttpConnection</code>实例，表示与目标服务器的实际连接。</li>
+<li><code>HttpHost</code>实例，表示连接目标。</li>
+<li><code>HttpRoute</code>实例，表示完整的连接路由。</li>
+<li><code>HttpRequest</code>实例，表示实际的HTTP请求。</li>
+<li><code>HttpResponse</code>实例，表示实际的HTTP响应。</li>
+<li><code>java.lang.Boolean</code>对象表示标记实际请求是否已经完全传送到了连接目标。</li>
+<li><code>RequestConfig</code>对象表示实际的请求配置。</li>
+<li><code>java.util.List&lt;URI&gt;</code>对象表示所有在执行请求过程中得到的重定向位置的一个集合。</li>
+</ul>
+
+<p>可以使用<code>HttpClientContext</code>适配器类来简化上下文状态的相互作用。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">HttpContext</span> <span class="n">context</span> <span class="o">=</span> <span class="o">&lt;...&gt;</span>
+<span class="lineno">2</span>   <span class="n">HttpClientContext</span> <span class="n">clientContext</span> <span class="o">=</span> <span class="n">HttpClientContext</span><span class="o">.</span><span class="na">adapt</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+<span class="lineno">3</span>   <span class="n">HttpHost</span> <span class="n">target</span> <span class="o">=</span> <span class="n">clientContext</span><span class="o">.</span><span class="na">getTargetHost</span><span class="o">();</span>
+<span class="lineno">4</span>   <span class="n">HttpRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">clientContext</span><span class="o">.</span><span class="na">getRequest</span><span class="o">();</span>
+<span class="lineno">5</span>   <span class="n">HttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">clientContext</span><span class="o">.</span><span class="na">getResponse</span><span class="o">();</span>
+<span class="lineno">6</span>   <span class="n">RequestConfig</span> <span class="n">config</span> <span class="o">=</span> <span class="n">clientContext</span><span class="o">.</span><span class="na">getRequestConfig</span><span class="o">();</span></code></pre></div>
+
+<p>为了保证会话上下文和请求之间状态信息的自动传播，表示一个逻辑相关的会话的多个请求序列应被同一个<code>HttpContext</code>实例执行。</p>
+
+<p>下面的例子里，被初始请求设置的请求配置将会保存在执行上下文中，通过共享同一个上下文，请求配置还被传播到多个连续的请求中。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">RequestConfig</span> <span class="n">requestConfig</span> <span class="o">=</span> <span class="n">RequestConfig</span><span class="o">.</span><span class="na">custom</span><span class="o">()</span>
+<span class="lineno"> 3</span>          <span class="o">.</span><span class="na">setSocketTimeout</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span>
+<span class="lineno"> 4</span>          <span class="o">.</span><span class="na">setConnectTimeout</span><span class="o">(</span><span class="mi">1000</span><span class="o">)</span>
+<span class="lineno"> 5</span>          <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="lineno"> 6</span> 
+<span class="lineno"> 7</span>  <span class="n">HttpGet</span> <span class="n">httpget1</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/1&quot;</span><span class="o">);</span>
+<span class="lineno"> 8</span>  <span class="n">httpget1</span><span class="o">.</span><span class="na">setConfig</span><span class="o">(</span><span class="n">requestConfig</span><span class="o">);</span>
+<span class="lineno"> 9</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response1</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget1</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span>
+<span class="lineno">10</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno">11</span>      <span class="n">HttpEntity</span> <span class="n">entity1</span> <span class="o">=</span> <span class="n">response1</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno">12</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">13</span>      <span class="n">response1</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">14</span>  <span class="o">}</span>
+<span class="lineno">15</span>  <span class="n">HttpGet</span> <span class="n">httpget2</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/2&quot;</span><span class="o">);</span>
+<span class="lineno">16</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response2</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget2</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span>
+<span class="lineno">17</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno">18</span>      <span class="n">HttpEntity</span> <span class="n">entity2</span> <span class="o">=</span> <span class="n">response2</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno">19</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">20</span>      <span class="n">response2</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">21</span>  <span class="o">}</span></code></pre></div>
+
+<h2>1.4. 异常处理</h2>
+
+<p>HttpClient可抛出两种类型的异常：当一个I/O失败（如socket超时或者socket重置）时，抛出<code>java.io.IOException</code>；当一个HTTP失败（如违反HTTP协议）时，抛出<code>HttpException</code>。一般来说，I/O错误被认为非致命的，可修复的；而HTTP协议错误则被认为是致命的，不可自动修复的。</p>
+
+<h3>1.4.1. HTTP传输安全</h3>
+
+<p>理解HTTP协议并非对所有类型的应用程序都适合这一点非常重要。HTTP是一个简单的面向请求/响应的协议，它最初是为了支持静态或动态生成的内容检索而设计的。它并没有打算支持事务操作。举个例子，如果它成功接收并处理了请求，HTTP服务器将考虑履行它一部分合同，服务器会生成一个响应并向客户返回一个状态码。如果客户因为读取超时、请求取消或系统宕机而接收响应失败，服务器并不会试图回滚事务。如果客户决定重发相同请求，服务器将不可避免地多次执行相同的事务。某些情况下，这可能导致应用程序数据损坏或应用程序状态不一致。</p>
+
+<p>尽管HTTP没有被设计成可以支持事务处理，但它仍可以被用作一个为关键任务提供一定满足条件的传输协议。为了保证HTTP传输层安全性，系统必须保证HTTP方法在应用层的幂等性。</p>
+
+<h3>1.4.2. 幂等性方法</h3>
+
+<p>HTTP/1.1规范定义了幂等性方法：</p>
+
+<p>【N &gt; 0 个相同的请求的作用和一个请求的作用相同，方法可以具有幂等性（除了错误和过期的问题）】</p>
+
+<p>换句话说，应用程序应该保证为相同方法的多次执行做好准备。这是可以实现的，例如，通过提供一个唯一的事务id和避免相同逻辑操作的其他途径。</p>
+
+<p>要注意这个问题对于HttpClient并不特殊。基于浏览器的应用程序都有相同的问题，这和HTTP方法的非幂等性有关。</p>
+
+<p>HttpClient认为非实体封装方法，例如<code>GET</code>和<code>HEAD</code>具有幂等性；而实体封装方法，例如<code>POST</code>和<code>PUT</code>就不具有。</p>
+
+<h3>1.4.3. 自动异常修复</h3>
+
+<p>默认HttpClient会试图自动修复I/O异常。默认的自动修复机制仅仅限于一些安全的异常。</p>
+
+<ul>
+<li>HttpClient不会试图去修复任何逻辑或HTTP协议错误（那些继承了<code>HttpException</code>的类）。</li>
+<li>HttpClient会自动重试那些幂等性方法。</li>
+<li>HttpClient会自动重试那些，当HTTP请求仍然向目标服务器传送时，导致传输异常失败的方法（例如，请求并没有完整地传送到服务器）。</li>
+</ul>
+
+<h3>1.4.4. 请求重试处理程序</h3>
+
+<p>为了能够自定义异常恢复机制，可以提供<code>HttpRequestRetryHandler</code>接口的一个实现。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">HttpRequestRetryHandler</span> <span class="n">myRetryHandler</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpRequestRetryHandler</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno"> 2</span> 
+<span class="lineno"> 3</span>      <span class="kd">public</span> <span class="kt">boolean</span> <span class="nf">retryRequest</span><span class="o">(</span>
+<span class="lineno"> 4</span>              <span class="n">IOException</span> <span class="n">exception</span><span class="o">,</span>
+<span class="lineno"> 5</span>              <span class="kt">int</span> <span class="n">executionCount</span><span class="o">,</span>
+<span class="lineno"> 6</span>              <span class="n">HttpContext</span> <span class="n">context</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 7</span>          <span class="k">if</span> <span class="o">(</span><span class="n">executionCount</span> <span class="o">&gt;=</span> <span class="mi">5</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno"> 8</span>              <span class="c1">// Do not retry if over max retry count</span>
+<span class="lineno"> 9</span>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">10</span>          <span class="o">}</span>
+<span class="lineno">11</span>          <span class="k">if</span> <span class="o">(</span><span class="n">exception</span> <span class="k">instanceof</span> <span class="n">InterruptedIOException</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">12</span>              <span class="c1">// Timeout</span>
+<span class="lineno">13</span>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">14</span>          <span class="o">}</span>
+<span class="lineno">15</span>          <span class="k">if</span> <span class="o">(</span><span class="n">exception</span> <span class="k">instanceof</span> <span class="n">UnknownHostException</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">16</span>              <span class="c1">// Unknown host</span>
+<span class="lineno">17</span>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">18</span>          <span class="o">}</span>
+<span class="lineno">19</span>          <span class="k">if</span> <span class="o">(</span><span class="n">exception</span> <span class="k">instanceof</span> <span class="n">ConnectTimeoutException</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">20</span>              <span class="c1">// Connection refused</span>
+<span class="lineno">21</span>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">22</span>          <span class="o">}</span>
+<span class="lineno">23</span>          <span class="k">if</span> <span class="o">(</span><span class="n">exception</span> <span class="k">instanceof</span> <span class="n">SSLException</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">24</span>              <span class="c1">// SSL handshake exception</span>
+<span class="lineno">25</span>              <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">26</span>          <span class="o">}</span>
+<span class="lineno">27</span>          <span class="n">HttpClientContext</span> <span class="n">clientContext</span> <span class="o">=</span> <span class="n">HttpClientContext</span><span class="o">.</span><span class="na">adapt</span><span class="o">(</span><span class="n">context</span><span class="o">);</span>
+<span class="lineno">28</span>          <span class="n">HttpRequest</span> <span class="n">request</span> <span class="o">=</span> <span class="n">clientContext</span><span class="o">.</span><span class="na">getRequest</span><span class="o">();</span>
+<span class="lineno">29</span>          <span class="kt">boolean</span> <span class="n">idempotent</span> <span class="o">=</span> <span class="o">!(</span><span class="n">request</span> <span class="k">instanceof</span> <span class="n">HttpEntityEnclosingRequest</span><span class="o">);</span>
+<span class="lineno">30</span>          <span class="k">if</span> <span class="o">(</span><span class="n">idempotent</span><span class="o">)</span> <span class="o">{</span>
+<span class="lineno">31</span>              <span class="c1">// Retry if the request is considered idempotent</span>
+<span class="lineno">32</span>              <span class="k">return</span> <span class="kc">true</span><span class="o">;</span>
+<span class="lineno">33</span>          <span class="o">}</span>
+<span class="lineno">34</span>          <span class="k">return</span> <span class="kc">false</span><span class="o">;</span>
+<span class="lineno">35</span>      <span class="o">}</span>
+<span class="lineno">36</span> 
+<span class="lineno">37</span>  <span class="o">};</span>
+<span class="lineno">38</span>  <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">()</span>
+<span class="lineno">39</span>          <span class="o">.</span><span class="na">setRetryHandler</span><span class="o">(</span><span class="n">myRetryHandler</span><span class="o">)</span>
+<span class="lineno">40</span>          <span class="o">.</span><span class="na">build</span><span class="o">();</span></code></pre></div>
+
+<h2>1.5. 中止请求</h2>
+
+<p>某些情况下，由于目标服务器的高载荷或者是客户端的大量的并发请求，HTTP请求处理不能够在预计的期限内完成。这种情况下，需要提前中止请求并唤醒因为I/O操作而阻塞的执行线程。通过<code>HttpUriRequest#abort()</code>方法，HttpClient执行的HTTP请求可以在任何执行阶段被中止。此方法是线程安全的，而且可以被任何线程调用。当一个HTTP请求被中止时，通过抛出一个<code>InterruptedIOException</code>，它的执行线程（即使它被I/O操作阻塞）保证会被唤醒。</p>
+
+<h2>1.6. HTTP协议拦截器</h2>
+
+<p>HTTP协议拦截器是一个实现了HTTP协议某个具体方面的程序。一般协议拦截器作用于一个特定或一组相关的传入消息头部。或者用有一个特定或一组相关的头部填充传出消息。协议拦截器也可以对封装了消息的内容实体进行操作——透明内容的压缩/解压就是一个很好的例子。通常这是使用“修饰模式”达成的，封装实体类被用来修饰原实体。几个协议拦截器可以组合而成为一个逻辑单元。</p>
+
+<p>协议拦截器可以通过HTTP执行上下文共享信息来互相协作——例如一个处理状态。协议拦截器可以使用HTTP上下文来存储一个请求或几个连续请求的处理状态。</p>
+
+<p>通常，只要拦截器不依赖于一个特定的处理上下文状态，它们的执行顺序没有关系。如果协议拦截器是相互依存的，那么必须在一个特定的顺序中执行，它们应该按他们期待的执行顺序添加到协议处理程序中。</p>
+
+<p>这是一个本地上下文如何在连续请求之间保持一个处理状态的例子：</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">()</span>
+<span class="lineno"> 2</span>          <span class="o">.</span><span class="na">addInterceptorLast</span><span class="o">(</span><span class="k">new</span> <span class="nf">HttpRequestInterceptor</span><span class="o">()</span> <span class="o">{</span>
+<span class="lineno"> 3</span> 
+<span class="lineno"> 4</span>              <span class="kd">public</span> <span class="kt">void</span> <span class="nf">process</span><span class="o">(</span>
+<span class="lineno"> 5</span>                      <span class="kd">final</span> <span class="n">HttpRequest</span> <span class="n">request</span><span class="o">,</span>
+<span class="lineno"> 6</span>                      <span class="kd">final</span> <span class="n">HttpContext</span> <span class="n">context</span><span class="o">)</span> <span class="kd">throws</span> <span class="n">HttpException</span><span class="o">,</span> <span class="n">IOException</span> <span class="o">{</span>
+<span class="lineno"> 7</span>                  <span class="n">AtomicInteger</span> <span class="n">count</span> <span class="o">=</span> <span class="o">(</span><span class="n">AtomicInteger</span><span class="o">)</span> <span class="n">context</span><span class="o">.</span><span class="na">getAttribute</span><span class="o">(</span><span class="s">&quot;count&quot;</span><span class="o">);</span>
+<span class="lineno"> 8</span>                  <span class="n">request</span><span class="o">.</span><span class="na">addHeader</span><span class="o">(</span><span class="s">&quot;Count&quot;</span><span class="o">,</span> <span class="n">Integer</span><span class="o">.</span><span class="na">toString</span><span class="o">(</span><span class="n">count</span><span class="o">.</span><span class="na">getAndIncrement</span><span class="o">()));</span>
+<span class="lineno"> 9</span>              <span class="o">}</span>
+<span class="lineno">10</span> 
+<span class="lineno">11</span>          <span class="o">})</span>
+<span class="lineno">12</span>          <span class="o">.</span><span class="na">build</span><span class="o">();</span>
+<span class="lineno">13</span> 
+<span class="lineno">14</span>  <span class="n">AtomicInteger</span> <span class="n">count</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">AtomicInteger</span><span class="o">(</span><span class="mi">1</span><span class="o">);</span>
+<span class="lineno">15</span>  <span class="n">HttpClientContext</span> <span class="n">localContext</span> <span class="o">=</span> <span class="n">HttpClientContext</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+<span class="lineno">16</span>  <span class="n">localContext</span><span class="o">.</span><span class="na">setAttribute</span><span class="o">(</span><span class="s">&quot;count&quot;</span><span class="o">,</span> <span class="n">count</span><span class="o">);</span>
+<span class="lineno">17</span> 
+<span class="lineno">18</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost/&quot;</span><span class="o">);</span>
+<span class="lineno">19</span>  <span class="k">for</span> <span class="o">(</span><span class="kt">int</span> <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span><span class="o">;</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="mi">10</span><span class="o">;</span> <span class="n">i</span><span class="o">++)</span> <span class="o">{</span>
+<span class="lineno">20</span>      <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">,</span> <span class="n">localContext</span><span class="o">);</span>
+<span class="lineno">21</span>      <span class="k">try</span> <span class="o">{</span>
+<span class="lineno">22</span>          <span class="n">HttpEntity</span> <span class="n">entity</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="na">getEntity</span><span class="o">();</span>
+<span class="lineno">23</span>      <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">24</span>          <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">25</span>      <span class="o">}</span>
+<span class="lineno">26</span>  <span class="o">}</span></code></pre></div>
+
+<h2>1.7. 重定向处理</h2>
+
+<p>除了那些HTTP协议明确禁止的（要求用户干预的）之外，HttpClient自动处理所有类型的重定向。<code>POST</code>和<code>PUT</code>请求出现的<code>See Other</code>（状态码303）重定向会根据HTTP规范转换为<code>GET</code>请求。我们可以使用一个自定义重定向策略来减少<code>POST</code>方法被HTTP规范强迫自动重定向的限制。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno">1</span> <span class="n">LaxRedirectStrategy</span> <span class="n">redirectStrategy</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">LaxRedirectStrategy</span><span class="o">();</span>
+<span class="lineno">2</span>   <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">custom</span><span class="o">()</span>
+<span class="lineno">3</span>           <span class="o">.</span><span class="na">setRedirectStrategy</span><span class="o">(</span><span class="n">redirectStrategy</span><span class="o">)</span>
+<span class="lineno">4</span>           <span class="o">.</span><span class="na">build</span><span class="o">();</span></code></pre></div>
+
+<p>HttpClient必须在它的执行过程中经常地重写请求信息。默认<code>HTTP/1.0</code>和<code>HTTP/1.1</code>一般使用相对请求<code>URIs</code>。同样地，原请求可能会被重定向到其他位置多次。最终解释的绝对HTTP位置可以使用原请求和上下文来创建。实用方法<code>URIUtils#resolve</code>可以创建那些用来生成最终请求的解析的绝对<code>URI</code>。此方法包含了重定向请求或原请求的最后片段的标记符。</p>
+
+<div class="highlight"><pre><code class="language-java" data-lang="java"><span class="lineno"> 1</span> <span class="n">CloseableHttpClient</span> <span class="n">httpclient</span> <span class="o">=</span> <span class="n">HttpClients</span><span class="o">.</span><span class="na">createDefault</span><span class="o">();</span>
+<span class="lineno"> 2</span>  <span class="n">HttpClientContext</span> <span class="n">context</span> <span class="o">=</span> <span class="n">HttpClientContext</span><span class="o">.</span><span class="na">create</span><span class="o">();</span>
+<span class="lineno"> 3</span>  <span class="n">HttpGet</span> <span class="n">httpget</span> <span class="o">=</span> <span class="k">new</span> <span class="nf">HttpGet</span><span class="o">(</span><span class="s">&quot;http://localhost:8080/&quot;</span><span class="o">);</span>
+<span class="lineno"> 4</span>  <span class="n">CloseableHttpResponse</span> <span class="n">response</span> <span class="o">=</span> <span class="n">httpclient</span><span class="o">.</span><span class="na">execute</span><span class="o">(</span><span class="n">httpget</span><span class="o">,</span> <span class="n">context</span><span class="o">);</span>
+<span class="lineno"> 5</span>  <span class="k">try</span> <span class="o">{</span>
+<span class="lineno"> 6</span>      <span class="n">HttpHost</span> <span class="n">target</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getTargetHost</span><span class="o">();</span>
+<span class="lineno"> 7</span>      <span class="n">List</span><span class="o">&lt;</span><span class="n">URI</span><span class="o">&gt;</span> <span class="n">redirectLocations</span> <span class="o">=</span> <span class="n">context</span><span class="o">.</span><span class="na">getRedirectLocations</span><span class="o">();</span>
+<span class="lineno"> 8</span>      <span class="n">URI</span> <span class="n">location</span> <span class="o">=</span> <span class="n">URIUtils</span><span class="o">.</span><span class="na">resolve</span><span class="o">(</span><span class="n">httpget</span><span class="o">.</span><span class="na">getURI</span><span class="o">(),</span> <span class="n">target</span><span class="o">,</span> <span class="n">redirectLocations</span><span class="o">);</span>
+<span class="lineno"> 9</span>      <span class="n">System</span><span class="o">.</span><span class="na">out</span><span class="o">.</span><span class="na">println</span><span class="o">(</span><span class="s">&quot;Final HTTP location: &quot;</span> <span class="o">+</span> <span class="n">location</span><span class="o">.</span><span class="na">toASCIIString</span><span class="o">());</span>
+<span class="lineno">10</span>      <span class="c1">// Expected to be an absolute URI</span>
+<span class="lineno">11</span>  <span class="o">}</span> <span class="k">finally</span> <span class="o">{</span>
+<span class="lineno">12</span>      <span class="n">response</span><span class="o">.</span><span class="na">close</span><span class="o">();</span>
+<span class="lineno">13</span>  <span class="o">}</span></code></pre></div>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/brief-introduction-to-http/" class=""  >下一篇：浅谈HTTP协议</a></p>
+    <p><a  href="/learn-japanese-1/" class=""  >上一篇：日语学习（初级上）</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/httpclient-4-3-x-chapter-1" data-url="http://liangbizhi.github.io/httpclient-4-3-x-chapter-1/" data-title="HttpClient4.3.x第一章入门教程" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
+        </article>
+        <footer>
+        <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
+        </p>
+        </footer>
+    </div>
+</body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61782303-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="/media/js/script.js"></script>
+</html>

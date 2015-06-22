@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,DOM Event事件" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。DOM Event事件" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>DOM Event事件</title>
+    <link rel="shortcut icon" href="/media/images/favicon.ico" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/iconfont.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <!--<link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml" />-->
+    <!--[if lt IE 9]>
+    <div class="bsie">
+        您的浏览器版本过旧，请升级为Google Chrome浏览器进行浏览 :-D
+        <a href="javascript:void(0);" onclick="this.parentNode.style.display='none';">关闭</a>
+    </div>
+    <![endif]-->
+</head>
+
+<body>
+   <!--header-->
+    <header id="header" class="">
+        <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
+        <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
+            <img class="header-picture" src="/media/images/avatar.png" alt="头像">
+        </a>
+    </header>
+    <!--sidebar-->
+    <nav id="sidebar">
+        <div class="sidebar-profile">
+            <a href="/about/" title="liangbizhi">
+                <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
+            </a>
+            <span class="sidebar-profile-name">liangbizhi</span>
+        </div>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/">
+                        <i class="icon iconfont">&#xe603;</i>
+                        <span class="sidebar-button-desc">主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/categories/">
+                        <i class="icon iconfont">&#xe601;</i>
+                        <span class="sidebar-button-desc">分&nbsp;&nbsp;&nbsp;&nbsp;类</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/tags/">
+                        <i class="icon iconfont">&#xe609;</i>
+                        <span class="sidebar-button-desc">标&nbsp;&nbsp;&nbsp;&nbsp;签</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/guestbook/">
+
+                        <i class="icon iconfont">&#xe606;</i>
+                        <span class="sidebar-button-desc">留&nbsp;&nbsp;&nbsp;&nbsp;言</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link st-search-show-outputs" href="/about/">
+
+                        <i class="icon iconfont">&#xe604;</i>
+                        <span class="sidebar-button-desc">关&nbsp;&nbsp;&nbsp;&nbsp;于</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link " href="javascript:void(0);">
+
+                        <i class="icon iconfont">&#xe607;</i>
+                        <span class="sidebar-button-desc">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
+                        <i class="icon iconfont">&#xe605;</i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="https://plus.google.com/107690026046415883872" target="_blank">
+                        <i class="icon iconfont">&#xe608;</i>
+                        <span class="sidebar-button-desc">Google Plus</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://weibo.com/bikuqixinzhi" target="_blank">
+                        <i class="icon iconfont">&#xe602;</i>
+                        <span class="sidebar-button-desc">Weibo</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="#">
+                        <i class="icon iconfont">&#xe600;</i>
+                        <span class="sidebar-button-desc">RSS订阅</span>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main" role="main">
+        <header>
+            <h1>DOM Event事件</h1>
+        </header>
+        <article class="content">
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-04-29">2015-04-29</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#javascript" title="javascript">javascript</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<h1>事件流</h1>
+
+<p>描述的是从页面中接受事件的顺序。</p>
+
+<p>IE实现的是事件冒泡流，Netscape实现的是事件捕获流。</p>
+
+<h2>事件冒泡</h2>
+
+<p>即事件最开始由具体的元素（文档中嵌套层次最深的那个节点）接收，然后逐级向上传播至最不具体的那个节点（文档节点）。</p>
+
+<h2>事件捕获</h2>
+
+<p>不太具体的节点应该更早接收到事件，而最具体的节点最后接收到事件。</p>
+
+<p>可以放心使用事件冒泡流。</p>
+
+<h1>使用事件处理程序</h1>
+
+<h2>HTML事件处理程序</h2>
+
+<p>以HTML属性绑定事件的方法，但不利于代码解耦。</p>
+
+<h2>DOM 0级事件处理程序</h2>
+
+<p>较传统的方法，即把一个函数赋值给一个事件的处理程序属性。</p>
+
+<p>特点：简单、跨浏览器。没有HTML事件处理程序的缺点。</p>
+
+<h2>DOM 2级事件处理程序</h2>
+
+<p>怎么没有1级？没有的啦。</p>
+
+<p>DOM 2级事件定义了两个方法：<code>addEventListener()</code>和<code>removeEventListener()</code>。</p>
+
+<p>它们都接收三个参数：①要处理的事件名（不加<code>on</code>）②事件处理程序③bool值。</p>
+
+<p>第三个参数：<code>true</code>表示在事件捕获阶段处理事件；<code>false</code>表示在事件冒泡阶段捕获事件。一般为<code>false</code>。</p>
+
+<p><code>addEventListener()</code>添加的事件只能通过<code>removeEventListener()</code>方法移除。</p>
+
+<h2>IE事件处理程序</h2>
+
+<p>IE特别呀。它也提供了DOM 2级类似的两个方法：<code>attachEvent()</code>和<code>detachEvent()</code>。</p>
+
+<p>它们都接收两个参数：①要处理的事件名（要加<code>on</code>）②事件处理程序。</p>
+
+<p>为什么没有像DOM 2级事件一样有第三个bool值呢？IE8-的浏览器只支持事件冒泡流啦。</p>
+
+<p>支持IE事件处理程序的浏览器：IE和Opera。</p>
+
+<h2>跨浏览器的事件处理程序</h2>
+
+<p>使用能力判断。</p>
+
+<div class="highlight"><pre><code class="language-javascript" data-lang="javascript"><span class="lineno"> 1</span> <span class="kd">var</span> <span class="nx">eventUtil</span> <span class="o">=</span> <span class="p">{</span>
+<span class="lineno"> 2</span>      <span class="nx">addHandler</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">element</span><span class="p">,</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">handler</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 3</span>          <span class="c1">// 如果有DOM 2级能力。</span>
+<span class="lineno"> 4</span>          <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 5</span>              <span class="nx">element</span><span class="p">.</span><span class="nx">addEventListener</span><span class="p">(</span><span class="nx">eventName</span><span class="p">,</span> <span class="nx">handler</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="lineno"> 6</span>          <span class="p">}</span><span class="c1">// 否则如果有IE事件处理能力</span>
+<span class="lineno"> 7</span>          <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">attachEvent</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno"> 8</span>              <span class="nx">element</span><span class="p">.</span><span class="nx">addEvent</span><span class="p">(</span><span class="s1">&#39;on&#39;</span> <span class="o">+</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+<span class="lineno"> 9</span>          <span class="p">}</span><span class="c1">// DOM 0 级   </span>
+<span class="lineno">10</span>          <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">11</span>              <span class="nx">element</span><span class="p">[</span><span class="s1">&#39;on&#39;</span> <span class="o">+</span> <span class="nx">eventName</span><span class="p">]</span> <span class="o">=</span> <span class="nx">handler</span><span class="p">;</span> <span class="c1">// element[&#39;onclick&#39;] === element.onclick</span>
+<span class="lineno">12</span>          <span class="p">}</span>
+<span class="lineno">13</span>      <span class="p">}</span>
+<span class="lineno">14</span>      <span class="nx">removeHandler</span> <span class="o">:</span> <span class="kd">function</span> <span class="p">()</span> <span class="p">{</span>
+<span class="lineno">15</span>          <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">16</span>              <span class="nx">element</span><span class="p">.</span><span class="nx">removeEventListener</span><span class="p">(</span><span class="nx">eventName</span><span class="p">,</span> <span class="nx">handler</span><span class="p">,</span> <span class="kc">false</span><span class="p">);</span>
+<span class="lineno">17</span>          <span class="p">}</span>
+<span class="lineno">18</span>          <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">element</span><span class="p">.</span><span class="nx">detachEvent</span><span class="p">)</span> <span class="p">{</span>
+<span class="lineno">19</span>              <span class="nx">element</span><span class="p">.</span><span class="nx">detachEvent</span><span class="p">(</span><span class="s1">&#39;on&#39;</span> <span class="o">+</span> <span class="nx">eventName</span><span class="p">,</span> <span class="nx">handler</span><span class="p">);</span>
+<span class="lineno">20</span>          <span class="p">}</span>
+<span class="lineno">21</span>          <span class="k">else</span> <span class="p">{</span>
+<span class="lineno">22</span>              <span class="nx">element</span><span class="p">[</span><span class="s1">&#39;on&#39;</span> <span class="o">+</span> <span class="nx">eventName</span><span class="p">]</span> <span class="o">=</span> <span class="kc">null</span><span class="p">;</span>
+<span class="lineno">23</span>          <span class="p">}</span>
+<span class="lineno">24</span>      <span class="p">}</span>
+<span class="lineno">25</span>  <span class="p">};</span></code></pre></div>
+
+<h1>事件对象</h1>
+
+<p>Event对象包含了发生事件的各种属性。下面简单介绍一下。</p>
+
+<h2>DOM中的事件对象</h2>
+
+<ol>
+<li>type属性，获取事件类型。</li>
+<li>target属性，获取事件目标。</li>
+<li>bubbles属性，声明该类型事件是否在文档树中冒泡。</li>
+<li><p>cancelable属性，该事件是否具有能用preventDefault()方法取消的默认动作。</p></li>
+<li><p>stopPropagation()方法，阻止事件冒泡。</p></li>
+<li><p>preventDefault()方法，阻止事件的默认行为。比如阻止a链接的默认跳转行为。</p></li>
+</ol>
+
+<h2>IE中的事件对象</h2>
+
+<p>IE8-事件对象从window.event全局属性中取得。</p>
+
+<ol>
+<li>type属性。</li>
+<li><p>srcElement属性，获取事件目标。</p></li>
+<li><p>cancelBubble属性，阻止事件冒泡。(true or false)</p></li>
+<li><p>returnValue属性，阻止事件的默认行为。</p></li>
+</ol>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/js-obj/" class=""  >下一篇：对象与原型链</a></p>
+    <p><a  href="/clear-float/" class=""  >上一篇：各种清除浮动</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/DOM-event" data-url="http://liangbizhi.github.io/DOM-event/" data-title="DOM Event事件" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
+        </article>
+        <footer>
+        <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
+        </p>
+        </footer>
+    </div>
+</body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61782303-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="/media/js/script.js"></script>
+</html>

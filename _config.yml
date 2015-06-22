@@ -3,8 +3,8 @@ redcarpet:
     extensions: ["tables"]
 permalink: /:title/
 url: http://liangbizhi.github.io
-name: Bill Liang
-author: LiangBizhi
+name: liangbizhi
+author: liangbizhi
 qq: 
 email: liangbizhi1993#gmail.com（把#号换成@）
 duoshuo: liangbizhi
@@ -14,6 +14,5 @@ weibo: 1037054042
 appkey: 3989909957
 github: liangbizhi
 highlighter: pygments
-style: "#4184f3"
 safe: true
 paginate: 20

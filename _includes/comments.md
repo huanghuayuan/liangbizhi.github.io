@@ -2,7 +2,7 @@
 	{% if page.id %}
 	<div class="ds-thread" data-thread-key="{{ page.id }}" data-url="{{ site.url }}{{ page.url }}" data-title="{{ page.title }}" />
 	{% else %}
-	<div class="ds-thread" />
+	<div class="ds-thread" data-thread-key="{{ site.url }}{{ page.url }}" />
 	{% endif %}	
 	<script type="text/javascript">
 	/* duoshuo */

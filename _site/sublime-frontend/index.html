@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="zh-CN" lang="zh-CN">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="author" content="liangbizhi" />
+    <meta name="keywords" content="前端,梁必志,liangbizhi,Bill Liang,Web前端sublime使用技巧" />
+    <meta name="description" content="前端博客，博主脑袋有点异常。Web前端sublime使用技巧" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Web前端sublime使用技巧</title>
+    <link rel="shortcut icon" href="/media/images/favicon.ico" />
+    <link rel="stylesheet" href="/media/css/style.css" />
+    <link rel="stylesheet" href="/media/css/iconfont.css" />
+    <link rel="stylesheet" href="/media/css/highlight.css" />
+    <!--<link rel="alternate" type="application/atom+xml" title="RSS" href="/atom.xml" />-->
+    <!--[if lt IE 9]>
+    <div class="bsie">
+        您的浏览器版本过旧，请升级为Google Chrome浏览器进行浏览 :-D
+        <a href="javascript:void(0);" onclick="this.parentNode.style.display='none';">关闭</a>
+    </div>
+    <![endif]-->
+</head>
+
+<body>
+   <!--header-->
+    <header id="header" class="">
+        <i id="btn-open-sidebar" class="icon iconfont">&#xe60a;</i>
+        <h1 class="header-title"><a class="header-title-link" href="/">必先苦其心志</a></h1>
+        <a class="header-right-picture" href="/about/" title="liangbizhi">
+            <img class="header-picture" src="/media/images/avatar.png" alt="头像">
+        </a>
+    </header>
+    <!--sidebar-->
+    <nav id="sidebar">
+        <div class="sidebar-profile">
+            <a href="/about/" title="liangbizhi">
+                <img src="/media/images/avatar.png" alt="头像" class="sidebar-profile-picture">
+            </a>
+            <span class="sidebar-profile-name">liangbizhi</span>
+        </div>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/">
+                        <i class="icon iconfont">&#xe603;</i>
+                        <span class="sidebar-button-desc">主&nbsp;&nbsp;&nbsp;&nbsp;页</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/categories/">
+                        <i class="icon iconfont">&#xe601;</i>
+                        <span class="sidebar-button-desc">分&nbsp;&nbsp;&nbsp;&nbsp;类</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/tags/">
+                        <i class="icon iconfont">&#xe609;</i>
+                        <span class="sidebar-button-desc">标&nbsp;&nbsp;&nbsp;&nbsp;签</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="/guestbook/">
+
+                        <i class="icon iconfont">&#xe606;</i>
+                        <span class="sidebar-button-desc">留&nbsp;&nbsp;&nbsp;&nbsp;言</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link st-search-show-outputs" href="/about/">
+
+                        <i class="icon iconfont">&#xe604;</i>
+                        <span class="sidebar-button-desc">关&nbsp;&nbsp;&nbsp;&nbsp;于</span>
+                    </a>
+            </li>
+
+            <li class="sidebar-button">
+
+                    <a class="sidebar-button-link " href="javascript:void(0);">
+
+                        <i class="icon iconfont">&#xe607;</i>
+                        <span class="sidebar-button-desc">搜&nbsp;&nbsp;&nbsp;&nbsp;索</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://github.com/liangbizhi/" target="_blank">
+                        <i class="icon iconfont">&#xe605;</i>
+                        <span class="sidebar-button-desc">GitHub</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="https://plus.google.com/107690026046415883872" target="_blank">
+                        <i class="icon iconfont">&#xe608;</i>
+                        <span class="sidebar-button-desc">Google Plus</span>
+                    </a>
+            </li>
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="http://weibo.com/bikuqixinzhi" target="_blank">
+                        <i class="icon iconfont">&#xe602;</i>
+                        <span class="sidebar-button-desc">Weibo</span>
+                    </a>
+            </li>
+
+        </ul>
+        <ul class="sidebar-buttons">
+            <li class="sidebar-button">
+                    <a class="sidebar-button-link " href="#">
+                        <i class="icon iconfont">&#xe600;</i>
+                        <span class="sidebar-button-desc">RSS订阅</span>
+                    </a>
+            </li>
+        </ul>
+    </nav>
+    <div id="main" role="main">
+        <header>
+            <h1>Web前端sublime使用技巧</h1>
+        </header>
+        <article class="content">
+            <section class="meta">
+<span class="time">
+  <time datetime="2015-04-19">2015-04-19</time>
+</span>
+
+ | 
+<span class="categories">
+  分类
+  
+  <a href="/categories/#前端" title="前端">前端</a>&nbsp;
+  
+</span>
+
+
+ | 
+<span class="tags">
+  标签
+  
+  <a href="/tags/#工具" title="工具">工具</a>&nbsp;
+  
+</span>
+
+</section>
+<section class="post">
+<p>平常使用IDE比如WebStorm等来开发Web前端项目。这种IDE通常集成了很多功能，导致其启动速度非常慢。经常要等它十几秒，对于我们这些像风一般的程序员，显然这是不能忍的。俗话说：“工欲善其事必先利其器”，要是有个轻量一些，启动快一些，而且功能强大的编辑器就好了。当然它就是sublime编辑器啦！下面就针对Web前端开发来说说它的一些使用技巧。</p>
+
+<h1>Go to anything和命令模式</h1>
+
+<p>先简单简绍一下Sublime两个经常用的功能。</p>
+
+<p>第一个是Go to anything。<code>ctrl + p</code>打开该功能，在弹出的输入栏中可以输入文件名等内容，Sublime就可以帮助我们快速定位到该文件了，通过上下键来选择文件，同时，内容框中也会即时预览文件内容，非常方便。</p>
+
+<p>第二个是命令模式。<code>ctrl + shift + p</code>打开。命令支持模糊查找，比如可以输入<code>sidebar</code>来选择开关侧边栏命令，可以输入<code>minimap</code>来选择开关右侧的迷你地图命令等等。通过命令模式，Sublime能把我们从繁琐的鼠标操作中解放出来。</p>
+
+<h1>安装Package Control</h1>
+
+<p>Package Control是Sublime Text的包管理器，它使我们能极其简单地完成查找、安装和保持包更新等任务。一般安装了sublime之后是没有这个东东的（本人用的是Sublime Text 2）。安装它也很简单，到其官网复制一段代码到Sublime Text编辑器执行就可以了。</p>
+
+<ol>
+<li>复制对应自己版本的Sublime Text<a href="https://packagecontrol.io/installation" title="官网安装代码">官网安装代码</a>。</li>
+<li>打开Sublime Text，按 ctrl + ` 打开控制台，复制上面的代码执行，等待安装完成，重启Sublime即可。</li>
+</ol>
+
+<h1>安装emmet插件</h1>
+
+<p>emmet插件相信大家都知道，它最核心的功能就是可以通过书写缩写命令来生成HTML代码。它的语法有点像CSS的选择器再加上一些扩展的语法。</p>
+
+<p>在Sublime中<code>ctrl + shift + p</code>打开命令菜单，输入&quot;install package&quot;，Sublime会模糊匹配到相应的命令。打开之后，Sublime会自动加载最新的包信息（留意状态栏）。之后搜索&quot;emment&quot;安装该插件。打一次应用emment插件时，Sublime会加载PyV8，这个过程可能有点慢，如果慢到不能忍，可以手动安装PyV8。</p>
+
+<p>emment使用非常简单，比如输入：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">#page&gt;div.logo+ul#navigation&gt;li*5&gt;a{Item $}
+</code></pre></div>
+<p>接着按tab键，emment插件就会生成如下HTML代码：</p>
+
+<div class="highlight"><pre><code class="language-html" data-lang="html"><span class="lineno"> 1</span> <span class="nt">&lt;div</span> <span class="na">id=</span><span class="s">&quot;page&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 2</span>      <span class="nt">&lt;div</span> <span class="na">class=</span><span class="s">&quot;logo&quot;</span><span class="nt">&gt;&lt;/div&gt;</span>
+<span class="lineno"> 3</span>      <span class="nt">&lt;ul</span> <span class="na">id=</span><span class="s">&quot;navigation&quot;</span><span class="nt">&gt;</span>
+<span class="lineno"> 4</span>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Item 1<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="lineno"> 5</span>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Item 2<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="lineno"> 6</span>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Item 3<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="lineno"> 7</span>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Item 4<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="lineno"> 8</span>          <span class="nt">&lt;li&gt;&lt;a</span> <span class="na">href=</span><span class="s">&quot;&quot;</span><span class="nt">&gt;</span>Item 5<span class="nt">&lt;/a&gt;&lt;/li&gt;</span>
+<span class="lineno"> 9</span>      <span class="nt">&lt;/ul&gt;</span>
+<span class="lineno">10</span>  <span class="nt">&lt;/div&gt;</span></code></pre></div>
+
+<p>从此我萌就再也不用手动写HTML代码了。更多语法请参考emmet的官方文档，这里就不详述了。</p>
+
+<h1>安装一些snippets</h1>
+
+<p>平时我们会经常写一些javascript比如<code>document.getElementById</code>、<code>document.getElementsByTagName</code>等等诸如此类的比较繁琐的代码。有没有更简单的方式呢？通过安装一些snippets插件就可以啦。</p>
+
+<p>本人安装了javascript &amp; nodejs snippets和jquery的snippets，它们都可以通过install package命令来安装，搜索支持模糊匹配。</p>
+
+<p>安装后，就可以简化上面代码的书写了，比如你输入：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">gi
+</code></pre></div>
+<p>Sublime就会提示，选中提示并回车后，如下代码即可生成：</p>
+<div class="highlight"><pre><code class="language-text" data-lang="text">document.getElementById(&#39;id&#39;);
+</code></pre></div>
+<p>此时我们可以配合tab键选中<code>&#39;id&#39;</code>来修改成我们想要的id值。</p>
+
+<p>当然，它还有更多的代码提示，这需要大家去发现了。</p>
+
+<h1>安装侧边栏增强工具</h1>
+
+<p>Sublime默认是打开侧边栏的，如果没有请先打开。在侧边栏选中文件按右键，初始情况下Sublime只会弹出关闭的菜单，对于Web前端开发人员来说，这个功能显然是撇脚的。要是有个什么&quot;在浏览器中打开&quot;就完美了！你想想，当我们选中index.html时不正需要这个功能么？</p>
+
+<p>Sidebar Enhancements就是提供这种功能的插件，我们可以在package control官网中搜到它的详细信息。遗憾的是，它好像只支持Sublime Text 3。具体内容留给大家体验吧。</p>
+
+<h1>javascript注释</h1>
+
+<p>写过java的都知道java doc，如果我们也想在javascript中写类似的注释呢？我们可以选择DocBlockr插件。同样它也可以在install package命令下安装。怎么写java doc注释可以参考网上资料:-D</p>
+
+<h1>多行游标</h1>
+
+<p>Sublime还有个非常强大的功能——多行游标。</p>
+
+<p>比如我们想在几个或全部单词margin后面添加某些内容，如果一个一个去改，那效率是非常低的。我们可以采用如下操作：</p>
+
+<ol>
+<li>把鼠标光标移到margin单词，按<code>ctrl + d</code>键，此时，Sublime会高亮选择margin单词。</li>
+<li>继续按<code>ctrl + d</code>，Sublime会高亮匹配下一个margin单词。此时你也发现了，多行游标出来啦！这个非常关键。</li>
+<li>按<code>ctrl + k</code>跳过某个单词。</li>
+</ol>
+
+<p>这个是一种方法。如果我们想一下子就选中全部的margin单词呢？<code>alt + f3</code>快捷键帮到你哦。</p>
+
+<p>还有一种简单的方法可以实现多行游标。按住<code>shift</code>键和鼠标右键，上下拖动鼠标，怎么样？多行游标是不是出现了？</p>
+
+<p>退出多行游标只需要按<code>esc</code>键即可。</p>
+
+<h1>总结</h1>
+
+<p>这里介绍的只是一些实用的工具和一些快捷键，更多Sublime的功能有待大家去开发啦(<em>^__^</em>)。</p>
+
+</section>
+<section class="page-nav">
+    <br/>
+    <p><a  href="/BFC-hasLayout/" class=""  >下一篇：BFC与hasLayout</a></p>
+    <p><a  href="/local-session-storage/" class=""  >上一篇：LocalStorage和SessionStorage使用注意点</a></p>
+</section>
+
+	
+	<div class="ds-thread" data-thread-key="/sublime-frontend" data-url="http://liangbizhi.github.io/sublime-frontend/" data-title="Web前端sublime使用技巧" />
+		
+	<script type="text/javascript">
+	/* duoshuo */
+	var duoshuoQuery = {short_name:"liangbizhi"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+
+
+
+        </article>
+        <footer>
+        <p>Powered by <a href="http://jekyllrb.com" target="_blank">Jekyll</a> &#64;
+            <a href="http://github.com/liangbizhi/liangbizhi.github.io" target="_blank" title="项目主页">GitHub</a>
+            | © 2014 - 2015 <a href="/about/">liangbizhi</a>
+        </p>
+        </footer>
+    </div>
+</body>
+<script>
+    (function (i, s, o, g, r, a, m) {
+        i['GoogleAnalyticsObject'] = r;
+        i[r] = i[r] || function () {
+            (i[r].q = i[r].q || []).push(arguments)
+        }, i[r].l = 1 * new Date();
+        a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+        a.async = 1;
+        a.src = g;
+        m.parentNode.insertBefore(a, m)
+    })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+    ga('create', 'UA-61782303-1', 'auto');
+    ga('send', 'pageview');
+</script>
+<script type="text/javascript" src="/media/js/script.js"></script>
+</html>
