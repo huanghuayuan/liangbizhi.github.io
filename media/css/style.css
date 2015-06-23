@@ -132,9 +132,6 @@ table th{font-weight: bold;text-align: center;}
     margin-left: 14px;
     vertical-align: top;
 }
-.st-injected-content-generated{
-    display: none;
-}
 #header, #sidebar, #main{
     -webkit-transition: -webkit-transform .25s ease-in-out;
        -moz-transition: -moz-transform .25s ease-in-out;

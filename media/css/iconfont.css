@@ -20,6 +20,7 @@
 .icon-menu:before { content: "\e60a"; }
 .icon-weibo:before { content: "\e602"; }
 .icon-home:before { content: "\e603"; }
+.icon-zhihu:before { content: "\e60b"; }
 .icon-guanyujiubo:before { content: "\e604"; }
 .icon-github-alt:before { content: "\e605"; }
 .icon-message:before { content: "\e606"; }
