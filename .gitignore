@@ -1,6 +1,6 @@
 # vim temp
 *~
-
+_site/
 
 # Object files
 *.o
