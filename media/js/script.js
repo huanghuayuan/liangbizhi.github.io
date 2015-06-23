@@ -34,11 +34,4 @@
     }
     window.onresize = resize;
     btnOpenSidebar.onclick = controlSidebar;
-//    window.onload = function(){
-//        var searchGenerated = document.getElementById('st-injected-content');
-//        var sidebarSearch = document.getElementById('sidebar-search');
-//        sidebarSearch.onclick = function(){
-//            searchGenerated.click();
-//        }
-//    }
 })();
